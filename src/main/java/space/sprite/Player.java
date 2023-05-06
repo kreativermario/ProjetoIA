@@ -48,15 +48,15 @@ public class Player extends Sprite {
 	private void applyOrder(double[] output) {
 		int key = maxIndex(output);
 		if (key == 1) {
-			logger.info("Moving Left...");
+			//logger.info("Moving Left...");
 			dx = -2;
 		}
 		if (key == 2) {
-			logger.info("Moving Right...");
+			//logger.info("Moving Right...");
 			dx = 2;
 		}
 		if (key == 0) {
-			logger.info("Moving Stop...");
+			//logger.info("Moving Stop...");
 			dx = 0;
 		}
 	}

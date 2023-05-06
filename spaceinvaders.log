@@ -1,0 +1,10 @@
+16:30:21.259 [main] INFO  main.Main - Neural net: 0 | Time alive: 1366 | Kills: 0 | Fitness 1366.0
+16:30:21.288 [main] INFO  main.Main - Neural net: 1 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+16:30:21.309 [main] INFO  main.Main - Neural net: 2 | Time alive: 3641 | Kills: 1 | Fitness 13641.0
+16:30:21.330 [main] INFO  main.Main - Neural net: 3 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+16:30:21.336 [main] INFO  main.Main - Neural net: 4 | Time alive: 544 | Kills: 3 | Fitness 30544.0
+16:30:21.339 [main] INFO  main.Main - Neural net: 5 | Time alive: 544 | Kills: 0 | Fitness 544.0
+16:30:21.359 [main] INFO  main.Main - Neural net: 6 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+16:30:21.381 [main] INFO  main.Main - Neural net: 7 | Time alive: 3641 | Kills: 2 | Fitness 23641.0
+16:30:21.388 [main] INFO  main.Main - Neural net: 8 | Time alive: 1043 | Kills: 0 | Fitness 1043.0
+16:30:21.391 [main] INFO  main.Main - Neural net: 9 | Time alive: 544 | Kills: 0 | Fitness 544.0

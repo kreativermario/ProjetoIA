@@ -3,16 +3,17 @@ package nn;
 import controllers.GameController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import space.Board;
 import space.Commons;
 
+import java.util.Arrays;
 import java.util.Random;
 
-public class NeuralNetwork implements GameController {
+public class NeuralNetwork implements GameController, Comparable<NeuralNetwork> {
     private Logger logger = LoggerFactory.getLogger(NeuralNetwork.class);
     public static final int INPUT_DIM = Commons.STATE_SIZE;
     public static final int OUTPUT_DIM = Commons.NUM_ACTIONS;
     private int hiddenDim;
+    private double fitness;
     private double[][] inputWeights;
     private double[] hiddenBiases;
     private double[][] outputWeights;
@@ -138,9 +139,81 @@ public class NeuralNetwork implements GameController {
         return output;
     }
 
+    public void setFitness(double fitness){
+        this.fitness = fitness;
+    }
+
+    public double getFitness() {
+        return fitness;
+    }
+
+
 
     @Override
     public double[] nextMove(double[] currentState) {
         return forward(currentState);
     }
+
+
+    @Override
+    public int compareTo(NeuralNetwork other) {
+        return Double.compare(other.getFitness(), this.getFitness());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof NeuralNetwork other)) {
+            return false;
+        }
+        return Arrays.deepEquals(inputWeights, other.inputWeights)
+                && Arrays.equals(hiddenBiases, other.hiddenBiases)
+                && Arrays.deepEquals(outputWeights, other.outputWeights)
+                && Arrays.equals(outputBiases, other.outputBiases);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + Arrays.deepHashCode(inputWeights);
+        result = 31 * result + Arrays.hashCode(hiddenBiases);
+        result = 31 * result + Arrays.deepHashCode(outputWeights);
+        result = 31 * result + Arrays.hashCode(outputBiases);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("NeuralNetwork:\n");
+        sb.append("  Fitness: ").append(fitness).append("\n");
+        sb.append("  Input weights:\n");
+        for (double[] inputWeight : inputWeights) {
+            for (int j = 0; j < inputWeights[0].length; j++) {
+                sb.append(String.format("%.2f ", inputWeight[j]));
+            }
+            sb.append("\n");
+        }
+        sb.append("  Hidden biases:\n");
+        for (double hiddenBiase : hiddenBiases) {
+            sb.append(String.format("%.2f ", hiddenBiase));
+        }
+        sb.append("\n");
+        sb.append("  Output weights:\n");
+        for (double[] outputWeight : outputWeights) {
+            for (int j = 0; j < outputWeights[0].length; j++) {
+                sb.append(String.format("%.2f ", outputWeight[j]));
+            }
+            sb.append("\n");
+        }
+        sb.append("  Output biases:\n");
+        for (double outputBiase : outputBiases) {
+            sb.append(String.format("%.2f ", outputBiase));
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
 }

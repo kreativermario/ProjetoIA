@@ -250,10 +250,9 @@ public class Board extends JPanel {
 		double[] output = controller.nextMove(d);
 
 		player.act(output);
-		//System.out.println(output[3]);
 		if (output[3] > 0.5) {
 			if (inGame) {
-				logger.warn("Shooting...");
+				//logger.warn("Shooting...");
 				if (!shot.isVisible()) {
 					shot = new Shot(player.getX(), player.getY());
 				}
