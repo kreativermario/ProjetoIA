@@ -2,12 +2,15 @@ package space.sprite;
 
 import javax.swing.ImageIcon;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import space.Commons;
 
 import java.awt.event.KeyEvent;
 
 public class Player extends Sprite {
 
+	private Logger logger = LoggerFactory.getLogger(Player.class);
 	private int width;
 
 	public Player() {
@@ -45,12 +48,15 @@ public class Player extends Sprite {
 	private void applyOrder(double[] output) {
 		int key = maxIndex(output);
 		if (key == 1) {
+			logger.info("Moving Left...");
 			dx = -2;
 		}
 		if (key == 2) {
+			logger.info("Moving Right...");
 			dx = 2;
 		}
 		if (key == 0) {
+			logger.info("Moving Stop...");
 			dx = 0;
 		}
 	}

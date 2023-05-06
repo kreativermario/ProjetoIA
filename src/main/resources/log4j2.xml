@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <style name="info" class="org.apache.logging.log4j.core.layout.PatternLayout$ConverterRule" style="green">[%level]</style>
+                <style name="debug" class="org.apache.logging.log4j.core.layout.PatternLayout$ConverterRule" style="blue">[%level]</style>
+                <style name="error" class="org.apache.logging.log4j.core.layout.PatternLayout$ConverterRule" style="red">[%level]</style>
+                <style regex=".*Exception.*" style="red,bold"/>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

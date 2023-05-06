@@ -1,11 +1,15 @@
 package nn;
 
 import controllers.GameController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import space.Board;
 import space.Commons;
 
 import java.util.Random;
 
 public class NeuralNetwork implements GameController {
+    private Logger logger = LoggerFactory.getLogger(NeuralNetwork.class);
     public static final int INPUT_DIM = Commons.STATE_SIZE;
     public static final int OUTPUT_DIM = Commons.NUM_ACTIONS;
     private int hiddenDim;
@@ -22,6 +26,13 @@ public class NeuralNetwork implements GameController {
         this.outputBiases = new double[OUTPUT_DIM];
     }
 
+    /**
+     * Construtor usado para as próximas gerações
+     * @param INPUT_DIM
+     * @param hiddenDim
+     * @param OUTPUT_DIM
+     * @param values
+     */
     public NeuralNetwork(int INPUT_DIM, int hiddenDim, int OUTPUT_DIM, double[] values) {
         this(hiddenDim);
         int offset = 0;

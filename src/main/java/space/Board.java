@@ -19,11 +19,15 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import controllers.GameController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import space.sprite.Alien;
 import space.sprite.Player;
 import space.sprite.Shot;
 
 public class Board extends JPanel {
+
+	private Logger logger = LoggerFactory.getLogger(Board.class);
 
 	private Dimension d;
 	private List<Alien> aliens;
@@ -246,8 +250,10 @@ public class Board extends JPanel {
 		double[] output = controller.nextMove(d);
 
 		player.act(output);
+		//System.out.println(output[3]);
 		if (output[3] > 0.5) {
 			if (inGame) {
+				logger.warn("Shooting...");
 				if (!shot.isVisible()) {
 					shot = new Shot(player.getX(), player.getY());
 				}
