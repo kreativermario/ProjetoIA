@@ -96,3 +96,7 @@
 23:08:33.363 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 39
 23:08:37.287 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 40
 23:08:41.129 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 41
+23:08:44.976 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 42
+23:08:44.976 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Fittest: 93857.0
+23:08:44.977 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | FINISHED... writing file
+23:08:44.977 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | WROTE Fittest: 93857.0
