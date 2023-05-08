@@ -14,6 +14,7 @@ public class NeuralNetwork implements GameController, Comparable<NeuralNetwork> 
     public static final int OUTPUT_DIM = Commons.NUM_ACTIONS;
     private int hiddenDim;
     private double fitness;
+    private double [] chromossome;
     private double[][] inputWeights;
     private double[] hiddenBiases;
     private double[][] outputWeights;
@@ -29,12 +30,10 @@ public class NeuralNetwork implements GameController, Comparable<NeuralNetwork> 
 
     /**
      * Construtor usado para as próximas gerações
-     * @param INPUT_DIM
      * @param hiddenDim
-     * @param OUTPUT_DIM
      * @param values
      */
-    public NeuralNetwork(int INPUT_DIM, int hiddenDim, int OUTPUT_DIM, double[] values) {
+    public NeuralNetwork(int hiddenDim, double[] values) {
         this(hiddenDim);
         int offset = 0;
         for (int i = 0; i < INPUT_DIM; i++) {
