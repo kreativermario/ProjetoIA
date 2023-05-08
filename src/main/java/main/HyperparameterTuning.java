@@ -42,12 +42,6 @@ public class HyperparameterTuning {
 
             PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
             populationEvo.start();
-            try {
-                populationEvo.join();
-                logger.info("Num Run: {}", numRuns--);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
