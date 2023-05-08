@@ -1,5 +1,6 @@
 package main;
 
+import algoGenetico.PopulationEvo;
 import controllers.GameController;
 import nn.NeuralNetwork;
 import org.slf4j.Logger;

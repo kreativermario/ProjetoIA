@@ -65,7 +65,9 @@ public class NeuralNetwork implements GameController, Comparable<NeuralNetwork> 
     }
 
     public double[] getChromossome() {
-        double[] chromossome = new double[getChromossomeSize()];
+        if (chromossome != null) return chromossome;
+
+        chromossome = new double[getChromossomeSize()];
         int offset = 0;
         for (int i = 0; i < INPUT_DIM; i++) {
             for (int j = 0; j < hiddenDim; j++) {
