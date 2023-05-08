@@ -25,7 +25,6 @@ public class PopulationEvo extends Thread {
 //	public static final int HIDDEN_DIM_SIZE = 15;
 //	public static final double MUTATION_PROB = 0.3;
 //	public static final int POPULATION_SIZE = 650;
-	public static final Random RANDOM = new Random();
 
 	public PopulationEvo(Hyperparameters hyperparameters){
 		this.hyperparameters = hyperparameters;
@@ -165,7 +164,8 @@ public class PopulationEvo extends Thread {
 	private NeuralNetwork crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
 		//pick a random point in the genome
-		int random = RANDOM.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
+		Random randomObject = new Random(hyperparameters.getSeed());
+		int random = randomObject.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
 
 		double[] firstGenes1 = Arrays.copyOfRange(parent1.getChromossome(), 0, random);
 		double[] secondGenes1 = Arrays.copyOfRange(parent2.getChromossome(), random, parent2.getChromossomeSize());
@@ -202,11 +202,12 @@ public class PopulationEvo extends Thread {
 
 
 	public void mutate(NeuralNetwork neuralNetwork) {
+		Random randomObject = new Random(hyperparameters.getSeed());
 		// select two random genes to swap
-		int gene1 = RANDOM.nextInt(0, neuralNetwork.getChromossomeSize());
+		int gene1 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
 		int gene2;
 		do{
-			gene2 = RANDOM.nextInt(0, neuralNetwork.getChromossomeSize());
+			gene2 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
 		}while(gene2 == gene1);
 
 		// swap the values of the two selected genes

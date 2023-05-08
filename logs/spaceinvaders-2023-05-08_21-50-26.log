@@ -329,3 +329,7 @@
 21:57:24.841 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 25
 21:57:33.882 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 26
 21:57:43.204 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 27
+21:57:52.067 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 28
+21:58:01.255 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 29
+21:58:09.996 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 30
+21:58:19.083 [pool-1-thread-2] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-2 | Generation no: 31
