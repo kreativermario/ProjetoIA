@@ -1,0 +1,42 @@
+
+K
+java:S1066ş"/Merge this if statement with the enclosing one.(˜²›©üÿÿÿÿ
+F
+java:S1066€"/Merge this if statement with the enclosing one.(¨®×ê
+K
+java:S1066’"/Merge this if statement with the enclosing one.(³„®øÿÿÿÿ
+M
+java:S1066ö"/Merge this if statement with the enclosing one.(š´âŠ8®¥¼ÿ0
+u
+java:S1488°"_Immediately return this expression instead of assigning it to the temporary variable "fitness".(ÇÉš
+E
+java:S1948"(Make "logger" transient or serializable.(ÅŞåï8¨¿”ÿ0
+J
+java:S1948!"(Make "aliens" transient or serializable.(Ñ…Øûÿÿÿÿ8´ñíŒÿ0
+J
+java:S1948""(Make "player" transient or serializable.(Ç¹Ù±úÿÿÿÿ8´ñíŒÿ0
+H
+java:S1948#"&Make "shot" transient or serializable.(¹‘Ã²üÿÿÿÿ8´ñíŒÿ0
+H
+java:S19481",Make "controller" transient or serializable.(Í¡H8µñíŒÿ0
+]	java:S125F"<This block of commented-out lines of code should be removed.(ÅÅñ»üÿÿÿÿ8”î˜ãÿ0
+W
+java:S1854æ"9Remove this useless assignment to local variable "index".(í˜ö­8¢î˜ãÿ0
+V
+java:S1117Õ"9Rename "state" which hides the field declared at line 47.(¿ùÑV8¨î˜ãÿ0
+^	java:S125İ"<This block of commented-out lines of code should be removed.(óâÇ ùÿÿÿÿ8©î˜ãÿ0
+X	java:S125ç"<This block of commented-out lines of code should be removed.(¹ı8ªî˜ãÿ0
+p
+java:S3776í"RRefactor this method to reduce its Cognitive Complexity from 63 to the 15 allowed.(¸ñ®Æ8«î˜ãÿ0
+X
+java:S1117ù"5Rename "d" which hides the field declared at line 32.(½œ²³ÿÿÿÿÿ8¬î˜ãÿ0
+^	java:S125ÿ"<This block of commented-out lines of code should be removed.(”…Èùÿÿÿÿ8ï¦¼ÿ0
+O
+java:S1117å"8Rename "shot" which hides the field declared at line 35.(Ÿ€¶
+?
+java:S1905°")Remove this unnecessary cast to "double".(ÇÉš
+W	java:S125±"<This block of commented-out lines of code should be removed.(²‹ø—ıÿÿÿÿ
+9
+java:S3398š""Move this method into "GameCycle".(´–Í–
+G
+java:S1068"*Remove this unused "logger" private field.(ÅŞåï8ù¦¼ÿ0

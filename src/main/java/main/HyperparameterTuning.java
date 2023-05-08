@@ -83,12 +83,12 @@ public class HyperparameterTuning {
 
     public static void main(String[] args) {
         HyperparameterTuning hyperparameterTuning = new HyperparameterTuning();
-//        int numRuns = 10; // number of runs with different settings
-//        Random random = new Random();
-//        for (int i = 0; i < numRuns; i++) {
-//            hyperparameterTuning.runSingle();
-//        }
-        hyperparameterTuning.runSingle();
+        int numRuns = 5; // number of runs with different settings
+        Random random = new Random();
+        for (int i = 0; i < numRuns; i++) {
+            hyperparameterTuning.runSingle();
+        }
+//        hyperparameterTuning.runSingle();
         //hyperparameterTuning.runMultiple();
     }
 }

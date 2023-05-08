@@ -1,0 +1,15 @@
+23:01:57.490 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=11, nrFitIndividuals=266, tournamentSize=137, seed=125, hiddenDimSize=7, mutationProb=0.43395579795971806, populationSize=999}
+23:01:58.509 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 1
+23:01:59.476 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 2
+23:02:00.524 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 3
+23:02:01.597 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 4
+23:02:02.701 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 5
+23:02:03.763 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 6
+23:02:04.842 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 7
+23:02:05.918 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 8
+23:02:06.994 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 9
+23:02:08.048 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 10
+23:02:09.115 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 11
+23:02:09.115 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Fittest: 40835.0
+23:02:09.115 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | FINISHED... writing file
+23:02:09.116 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | WROTE Fittest: 40835.0
