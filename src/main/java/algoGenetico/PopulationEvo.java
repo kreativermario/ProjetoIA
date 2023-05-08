@@ -16,6 +16,7 @@ public class PopulationEvo extends Thread {
 	private static final String BEST_NN_FILE = "best_neural_network.txt";
 	private int curGeneration = 0;
 
+	private static final Object fileLock = new Object();
 	private Hyperparameters hyperparameters;
 //	public static final int NR_GENERATIONS = 40;
 //	public static final int NR_FIT_INDIVIDUALS = 20;
@@ -48,41 +49,43 @@ public class PopulationEvo extends Thread {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
-			logger.info("Generation no: {}", curGeneration);
+			logger.info("Thread: {} | Generation no: {}", Thread.currentThread().getName(), curGeneration);
 		}
 		saveBestNeuralNetwork();
 	}
 
 	public void saveBestNeuralNetwork() {
+		logger.info("Thread: {} | FINISHED... writing file", Thread.currentThread().getName());
 		try {
 			NeuralNetwork currentBestNN = getFittest();
 			double currentBestFitness = currentBestNN.getFitness();
-
-			// Append the current best neural network and parameters to the file
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
-				writer.newLine();
-				writer.write("-------------------------------------------------");
-				writer.newLine();
-				writer.write(String.valueOf(currentBestFitness));
-				writer.newLine();
-				writer.write(Arrays.toString(currentBestNN.getChromossome()));
-				writer.newLine();
-				writer.write("Population Size: " + hyperparameters.getPopulationSize());
-				writer.newLine();
-				writer.write("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
-				writer.newLine();
-				writer.write("Mutation Probability: " + hyperparameters.getMutationProb());
-				writer.newLine();
-				writer.write("Number of Generations: " + hyperparameters.getNrGenerations());
-				writer.newLine();
-				writer.write("Tournament Size: " + hyperparameters.getTournamentSize());
-				writer.newLine();
-				writer.write("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
-				writer.newLine();
-				writer.write("Seed: " + hyperparameters.getSeed());
-				writer.newLine();
-			} catch (IOException e) {
-				logger.error("Error appending best neural network and parameters to file", e);
+			synchronized (fileLock) {
+				// Append the current best neural network and parameters to the file
+				try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
+					writer.newLine();
+					writer.write("-------------------------------------------------");
+					writer.newLine();
+					writer.write(String.valueOf(currentBestFitness));
+					writer.newLine();
+					writer.write(Arrays.toString(currentBestNN.getChromossome()));
+					writer.newLine();
+					writer.write("Population Size: " + hyperparameters.getPopulationSize());
+					writer.newLine();
+					writer.write("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
+					writer.newLine();
+					writer.write("Mutation Probability: " + hyperparameters.getMutationProb());
+					writer.newLine();
+					writer.write("Number of Generations: " + hyperparameters.getNrGenerations());
+					writer.newLine();
+					writer.write("Tournament Size: " + hyperparameters.getTournamentSize());
+					writer.newLine();
+					writer.write("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
+					writer.newLine();
+					writer.write("Seed: " + hyperparameters.getSeed());
+					writer.newLine();
+				} catch (IOException e) {
+					logger.error("Error appending best neural network and parameters to file", e);
+				}
 			}
 		} catch (Exception e) {
 			logger.error("Error saving best neural network", e);
