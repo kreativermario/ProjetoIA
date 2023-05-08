@@ -65,7 +65,7 @@ public class PopulationEvo extends Thread {
 					writer.newLine();
 					writer.write("-------------------------------------------------");
 					writer.newLine();
-					writer.write(String.valueOf(currentBestFitness));
+					writer.write("Best Fitness: " + currentBestFitness);
 					writer.newLine();
 					writer.write(Arrays.toString(currentBestNN.getChromossome()));
 					writer.newLine();
