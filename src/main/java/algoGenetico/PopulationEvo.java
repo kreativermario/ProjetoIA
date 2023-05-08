@@ -5,21 +5,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import space.Board;
 
+import java.io.*;
 import java.util.*;
 
 public class PopulationEvo extends Thread {
 
 	private Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	List<NeuralNetwork> population = new LinkedList<>();
-	private static final int NR_GENERATIONS = 30;
+	private static final int NR_GENERATIONS = 40;
+	private static final String BEST_NN_FILE = "best_neural_network.txt";
 	private int curGeneration = 0;
 
-	private static final int NR_FIT_INDIVIDUALS = 100;
-	private static final int TOURNAMENT_SIZE = 15;
+	private static final int NR_FIT_INDIVIDUALS = 20;
+	private static final int TOURNAMENT_SIZE = 4;
 	public  static final int SEED = 750;
-	private static final int HIDDEN_DIM_SIZE = 10;
-	private static final double MUTATION_PROB = 0.2;
-	private static final int POPULATION_SIZE = 750;
+	private static final int HIDDEN_DIM_SIZE = 15;
+	private static final double MUTATION_PROB = 0.3;
+	private static final int POPULATION_SIZE = 650;
 	private static final Random RANDOM = new Random();
 
 	public PopulationEvo(){
@@ -44,9 +46,46 @@ public class PopulationEvo extends Thread {
 			}
 			logger.info("Generation no: {}", curGeneration);
 		}
-		Collections.sort(population);
-		population.forEach(e -> logger.info("Fim Fitness: {}", e.getFitness()));
+		saveBestNeuralNetwork();
 	}
+
+	public void saveBestNeuralNetwork() {
+		try {
+			NeuralNetwork currentBestNN = getFittest();
+			double currentBestFitness = currentBestNN.getFitness();
+
+			// Append the current best neural network and parameters to the file
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
+				writer.newLine();
+				writer.write("--------------------------------------------------------------------------------------------------");
+				writer.newLine();
+				writer.write(String.valueOf(currentBestFitness));
+				writer.newLine();
+				writer.write(Arrays.toString(currentBestNN.getChromossome()));
+				writer.newLine();
+				writer.write("Population Size: " + POPULATION_SIZE);
+				writer.newLine();
+				writer.write("Nr Fittest Individuals: " + NR_FIT_INDIVIDUALS);
+				writer.newLine();
+				writer.write("Mutation Probability: " + MUTATION_PROB);
+				writer.newLine();
+				writer.write("Number of Generations: " + NR_GENERATIONS);
+				writer.newLine();
+				writer.write("Tournament Size: " + TOURNAMENT_SIZE);
+				writer.newLine();
+				writer.write("Hidden Layer Size: " + HIDDEN_DIM_SIZE);
+				writer.newLine();
+				writer.write("Seed: " + SEED);
+				writer.newLine();
+			} catch (IOException e) {
+				logger.error("Error appending best neural network and parameters to file", e);
+			}
+		} catch (Exception e) {
+			logger.error("Error saving best neural network", e);
+		}
+	}
+
+
 
 	public NeuralNetwork getFittest(){
 		Collections.sort(population);
