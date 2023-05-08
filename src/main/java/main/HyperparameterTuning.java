@@ -17,15 +17,9 @@ public class HyperparameterTuning {
 
     private final Logger logger = LoggerFactory.getLogger(HyperparameterTuning.class);
 
-    private void runMultiple() throws InterruptedException {
-        int numRuns = 10; // number of runs with different settings
-        int numThreads = 4; // number of threads to run algorithms in parallel
+    private void runMultiple(){
+        int numRuns = 160; // number of runs with different settings
         Random random = new Random();
-        ExecutorService executor = Executors.newFixedThreadPool(numThreads);
-        List<Future<?>> futures = new ArrayList<>();
-
-        // Create a countdown latch to wait for all threads to finish
-        CountDownLatch latch = new CountDownLatch(numRuns);
 
         for (int i = 0; i < numRuns; i++) {
             // Randomize hyperparameters
@@ -47,19 +41,14 @@ public class HyperparameterTuning {
             hyperparameters.setPopulationSize(populationSize);
 
             PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
-
-            // Wrap the populationEvo in a new thread and submit it to the executor
-            futures.add(executor.submit(() -> {
-                populationEvo.start();
-                latch.countDown();
-            }));
+            populationEvo.start();
+            try {
+                populationEvo.join();
+                logger.info("Num Run: {}", numRuns--);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-        // Wait for all tasks to complete
-        latch.await();
-
-        executor.shutdown();
-        logger.debug("FINISHED");
     }
 
     private void runSingle() {
@@ -89,7 +78,6 @@ public class HyperparameterTuning {
 
     public static void main(String[] args) throws InterruptedException {
         HyperparameterTuning hyperparameterTuning = new HyperparameterTuning();
-        int numRuns = 5; // number of runs with different settings
 //        hyperparameterTuning.runSingle();
         hyperparameterTuning.runMultiple();
     }

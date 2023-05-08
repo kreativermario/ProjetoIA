@@ -30,7 +30,7 @@ public class PopulationEvo extends Thread {
 		//enquanto condição de parar não for atingida, cruzar e mutar
 		//Collections.sort(population);
 		//population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
-		logger.info(hyperparameters.toString());
+		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
 
 	}
 

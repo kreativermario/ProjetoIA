@@ -1,0 +1,84 @@
+23:42:09.581 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=64, nrFitIndividuals=64, tournamentSize=48, seed=543, hiddenDimSize=20, mutationProb=0.012165265787320356, populationSize=220}
+23:42:10.363 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 1
+23:42:10.967 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 2
+23:42:11.438 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 3
+23:42:11.840 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 4
+23:42:12.233 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 5
+23:42:12.650 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 6
+23:42:13.086 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 7
+23:42:13.542 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 8
+23:42:13.989 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 9
+23:42:14.454 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 10
+23:42:14.925 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 11
+23:42:15.395 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 12
+23:42:15.871 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 13
+23:42:16.348 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 14
+23:42:16.832 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 15
+23:42:17.315 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 16
+23:42:17.802 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 17
+23:42:18.289 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 18
+23:42:18.776 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 19
+23:42:19.265 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 20
+23:42:19.760 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 21
+23:42:20.256 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 22
+23:42:20.748 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 23
+23:42:21.242 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 24
+23:42:21.737 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 25
+23:42:22.235 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 26
+23:42:22.732 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 27
+23:42:23.224 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 28
+23:42:23.719 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 29
+23:42:24.214 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 30
+23:42:24.707 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 31
+23:42:25.200 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 32
+23:42:25.704 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 33
+23:42:26.201 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 34
+23:42:26.698 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 35
+23:42:27.197 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 36
+23:42:27.698 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 37
+23:42:28.198 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 38
+23:42:28.698 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 39
+23:42:29.202 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 40
+23:42:29.707 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 41
+23:42:30.215 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 42
+23:42:30.719 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 43
+23:42:31.224 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 44
+23:42:31.734 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 45
+23:42:32.237 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 46
+23:42:32.753 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 47
+23:42:33.262 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 48
+23:42:33.771 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 49
+23:42:34.284 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 50
+23:42:34.803 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 51
+23:42:35.323 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 52
+23:42:35.834 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 53
+23:42:36.347 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 54
+23:42:36.856 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 55
+23:42:37.365 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 56
+23:42:37.887 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 57
+23:42:38.406 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 58
+23:42:38.922 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 59
+23:42:39.439 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 60
+23:42:39.956 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 61
+23:42:40.472 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 62
+23:42:40.995 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 63
+23:42:41.519 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 64
+23:42:41.519 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Fittest: 73641.0
+23:42:41.519 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | GOING TO WRITE... writing file
+23:42:41.520 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | WROTE Fittest: 73641.0
+23:42:41.523 [main] INFO  main.HyperparameterTuning - Num Run: 160
+23:42:43.532 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=7, nrFitIndividuals=163, tournamentSize=145, seed=722, hiddenDimSize=19, mutationProb=0.7798160335499346, populationSize=653}
+23:42:45.228 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 1
+23:42:47.526 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 2
+23:42:50.557 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 3
+23:42:53.657 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 4
+23:42:56.665 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 5
+23:42:59.608 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 6
+23:43:02.702 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Generation no: 7
+23:43:02.703 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | Fittest: 73555.0
+23:43:02.703 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | GOING TO WRITE... writing file
+23:43:02.703 [Thread-1] INFO  algoGenetico.PopulationEvo - Thread: Thread-1 | WROTE Fittest: 73555.0
+23:43:02.704 [main] INFO  main.HyperparameterTuning - Num Run: 159
+23:43:03.678 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=10, nrFitIndividuals=74, tournamentSize=60, seed=893, hiddenDimSize=36, mutationProb=0.38546704523935005, populationSize=188}
+23:43:04.917 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 1
+23:43:05.873 [Thread-2] INFO  algoGenetico.PopulationEvo - Thread: Thread-2 | Generation no: 2
