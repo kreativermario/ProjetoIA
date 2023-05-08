@@ -57,7 +57,6 @@ public class Board extends JPanel {
 	public Board() {
 		initBoard();
 		gameInit();
-
 	}
 
 	public Board(GameController controller) {

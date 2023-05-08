@@ -11,15 +11,15 @@ public class PopulationEvo extends Thread {
 
 	private Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	List<NeuralNetwork> population = new LinkedList<>();
-	private static final int NR_GENERATIONS = 10;
+	private static final int NR_GENERATIONS = 30;
 	private int curGeneration = 0;
 
-	private static final int NR_FIT_INDIVIDUALS = 25;
-	private static final int TOURNAMENT_SIZE = 7;
-	private static final int SEED = 100;
-	private static final int HIDDEN_DIM_SIZE = 5;
-	private static final double MUTATION_PROB = 0.1;
-	private static final int POPULATION_SIZE = 100;
+	private static final int NR_FIT_INDIVIDUALS = 100;
+	private static final int TOURNAMENT_SIZE = 15;
+	public  static final int SEED = 750;
+	private static final int HIDDEN_DIM_SIZE = 10;
+	private static final double MUTATION_PROB = 0.2;
+	private static final int POPULATION_SIZE = 750;
 	private static final Random RANDOM = new Random();
 
 	public PopulationEvo(){
@@ -42,6 +42,7 @@ public class PopulationEvo extends Thread {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
+			logger.info("Generation no: {}", curGeneration);
 		}
 		Collections.sort(population);
 		population.forEach(e -> logger.info("Fim Fitness: {}", e.getFitness()));
@@ -170,8 +171,5 @@ public class PopulationEvo extends Thread {
 	}
 
 
-
-	//TODO: definir o que é fit no board (jogador ganha pontos por matar inimigos, por exemplo)
-	//TODO: definir o que é fit na rede neural (quanto mais tempo o jogador sobrevive, mais fit é a rede)
 
 }
