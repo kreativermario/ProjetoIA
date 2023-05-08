@@ -7,7 +7,7 @@ import space.Board;
 
 import java.util.*;
 
-public class PopulationEvo {
+public class PopulationEvo extends Thread {
 
 	private Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	List<NeuralNetwork> population = new LinkedList<>();
@@ -27,6 +27,11 @@ public class PopulationEvo {
 		//enquanto condição de parar não for atingida, cruzar e mutar
 		Collections.sort(population);
 		population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
+
+	}
+
+	@Override
+	public void run(){
 		while (curGeneration < NR_GENERATIONS) {
 			population = selectFit();
 			createNewGen();
@@ -40,6 +45,11 @@ public class PopulationEvo {
 		}
 		Collections.sort(population);
 		population.forEach(e -> logger.info("Fim Fitness: {}", e.getFitness()));
+	}
+
+	public NeuralNetwork getFittest(){
+		Collections.sort(population);
+		return population.get(0);
 	}
 
 

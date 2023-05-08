@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import algoGenetico.PopulationEvo;
 import controllers.GameController;
+import nn.NeuralNetwork;
 
 public class SpaceInvaders extends JFrame {
 
@@ -34,6 +36,16 @@ public class SpaceInvaders extends JFrame {
 
 			var ex = new SpaceInvaders();
 			ex.setVisible(true);
+			PopulationEvo populationEvo = new PopulationEvo();
+			populationEvo.start();
+			try {
+				populationEvo.join();
+				NeuralNetwork fittest = populationEvo.getFittest();
+				ex.setController(fittest);
+				showControllerPlaying(fittest, 100);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
 		});
 	}
 

@@ -1,0 +1,300 @@
+18:27:41.601 [main] INFO  main.Main - Neural net: 0 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.613 [main] INFO  main.Main - Neural net: 1 | Time alive: 2997 | Kills: 0 | Fitness 2997.0
+18:27:41.640 [main] INFO  main.Main - Neural net: 2 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.651 [main] INFO  main.Main - Neural net: 3 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.663 [main] INFO  main.Main - Neural net: 4 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.674 [main] INFO  main.Main - Neural net: 5 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.686 [main] INFO  main.Main - Neural net: 6 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.690 [main] INFO  main.Main - Neural net: 7 | Time alive: 544 | Kills: 2 | Fitness 20544.0
+18:27:41.701 [main] INFO  main.Main - Neural net: 8 | Time alive: 2614 | Kills: 0 | Fitness 2614.0
+18:27:41.712 [main] INFO  main.Main - Neural net: 9 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.723 [main] INFO  main.Main - Neural net: 10 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.727 [main] INFO  main.Main - Neural net: 11 | Time alive: 544 | Kills: 3 | Fitness 30544.0
+18:27:41.738 [main] INFO  main.Main - Neural net: 12 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.741 [main] INFO  main.Main - Neural net: 13 | Time alive: 648 | Kills: 1 | Fitness 10648.0
+18:27:41.752 [main] INFO  main.Main - Neural net: 14 | Time alive: 3641 | Kills: 3 | Fitness 33641.0
+18:27:41.754 [main] INFO  main.Main - Neural net: 15 | Time alive: 624 | Kills: 0 | Fitness 624.0
+18:27:41.764 [main] INFO  main.Main - Neural net: 16 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.766 [main] INFO  main.Main - Neural net: 17 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.772 [main] INFO  main.Main - Neural net: 18 | Time alive: 1684 | Kills: 0 | Fitness 1684.0
+18:27:41.774 [main] INFO  main.Main - Neural net: 19 | Time alive: 648 | Kills: 0 | Fitness 648.0
+18:27:41.785 [main] INFO  main.Main - Neural net: 20 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.797 [main] INFO  main.Main - Neural net: 21 | Time alive: 3641 | Kills: 2 | Fitness 23641.0
+18:27:41.799 [main] INFO  main.Main - Neural net: 22 | Time alive: 544 | Kills: 3 | Fitness 30544.0
+18:27:41.801 [main] INFO  main.Main - Neural net: 23 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.810 [main] INFO  main.Main - Neural net: 24 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.811 [main] INFO  main.Main - Neural net: 25 | Time alive: 342 | Kills: 0 | Fitness 342.0
+18:27:41.820 [main] INFO  main.Main - Neural net: 26 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.829 [main] INFO  main.Main - Neural net: 27 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.839 [main] INFO  main.Main - Neural net: 28 | Time alive: 3641 | Kills: 2 | Fitness 23641.0
+18:27:41.843 [main] INFO  main.Main - Neural net: 29 | Time alive: 1740 | Kills: 1 | Fitness 11740.0
+18:27:41.851 [main] INFO  main.Main - Neural net: 30 | Time alive: 2807 | Kills: 0 | Fitness 2807.0
+18:27:41.860 [main] INFO  main.Main - Neural net: 31 | Time alive: 3641 | Kills: 1 | Fitness 13641.0
+18:27:41.867 [main] INFO  main.Main - Neural net: 32 | Time alive: 3012 | Kills: 0 | Fitness 3012.0
+18:27:41.871 [main] INFO  main.Main - Neural net: 33 | Time alive: 1289 | Kills: 1 | Fitness 11289.0
+18:27:41.873 [main] INFO  main.Main - Neural net: 34 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.881 [main] INFO  main.Main - Neural net: 35 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.883 [main] INFO  main.Main - Neural net: 36 | Time alive: 392 | Kills: 1 | Fitness 10392.0
+18:27:41.892 [main] INFO  main.Main - Neural net: 37 | Time alive: 3641 | Kills: 2 | Fitness 23641.0
+18:27:41.901 [main] INFO  main.Main - Neural net: 38 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.903 [main] INFO  main.Main - Neural net: 39 | Time alive: 544 | Kills: 1 | Fitness 10544.0
+18:27:41.905 [main] INFO  main.Main - Neural net: 40 | Time alive: 849 | Kills: 0 | Fitness 849.0
+18:27:41.914 [main] INFO  main.Main - Neural net: 41 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.916 [main] INFO  main.Main - Neural net: 42 | Time alive: 544 | Kills: 2 | Fitness 20544.0
+18:27:41.918 [main] INFO  main.Main - Neural net: 43 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.927 [main] INFO  main.Main - Neural net: 44 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.931 [main] INFO  main.Main - Neural net: 45 | Time alive: 562 | Kills: 0 | Fitness 562.0
+18:27:41.934 [main] INFO  main.Main - Neural net: 46 | Time alive: 849 | Kills: 1 | Fitness 10849.0
+18:27:41.935 [main] INFO  main.Main - Neural net: 47 | Time alive: 287 | Kills: 0 | Fitness 287.0
+18:27:41.943 [main] INFO  main.Main - Neural net: 48 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.952 [main] INFO  main.Main - Neural net: 49 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.960 [main] INFO  main.Main - Neural net: 50 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.961 [main] INFO  main.Main - Neural net: 51 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.969 [main] INFO  main.Main - Neural net: 52 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.971 [main] INFO  main.Main - Neural net: 53 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.979 [main] INFO  main.Main - Neural net: 54 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.980 [main] INFO  main.Main - Neural net: 55 | Time alive: 289 | Kills: 0 | Fitness 289.0
+18:27:41.988 [main] INFO  main.Main - Neural net: 56 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.996 [main] INFO  main.Main - Neural net: 57 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:41.998 [main] INFO  main.Main - Neural net: 58 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:41.999 [main] INFO  main.Main - Neural net: 59 | Time alive: 271 | Kills: 0 | Fitness 271.0
+18:27:42.007 [main] INFO  main.Main - Neural net: 60 | Time alive: 3641 | Kills: 1 | Fitness 13641.0
+18:27:42.015 [main] INFO  main.Main - Neural net: 61 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.024 [main] INFO  main.Main - Neural net: 62 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.032 [main] INFO  main.Main - Neural net: 63 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.041 [main] INFO  main.Main - Neural net: 64 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.050 [main] INFO  main.Main - Neural net: 65 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.051 [main] INFO  main.Main - Neural net: 66 | Time alive: 510 | Kills: 0 | Fitness 510.0
+18:27:42.053 [main] INFO  main.Main - Neural net: 67 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.062 [main] INFO  main.Main - Neural net: 68 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.070 [main] INFO  main.Main - Neural net: 69 | Time alive: 3442 | Kills: 0 | Fitness 3442.0
+18:27:42.072 [main] INFO  main.Main - Neural net: 70 | Time alive: 978 | Kills: 0 | Fitness 978.0
+18:27:42.081 [main] INFO  main.Main - Neural net: 71 | Time alive: 3641 | Kills: 1 | Fitness 13641.0
+18:27:42.082 [main] INFO  main.Main - Neural net: 72 | Time alive: 472 | Kills: 0 | Fitness 472.0
+18:27:42.091 [main] INFO  main.Main - Neural net: 73 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.099 [main] INFO  main.Main - Neural net: 74 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.100 [main] INFO  main.Main - Neural net: 75 | Time alive: 377 | Kills: 0 | Fitness 377.0
+18:27:42.109 [main] INFO  main.Main - Neural net: 76 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.117 [main] INFO  main.Main - Neural net: 77 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.119 [main] INFO  main.Main - Neural net: 78 | Time alive: 544 | Kills: 3 | Fitness 30544.0
+18:27:42.127 [main] INFO  main.Main - Neural net: 79 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.136 [main] INFO  main.Main - Neural net: 80 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.145 [main] INFO  main.Main - Neural net: 81 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.153 [main] INFO  main.Main - Neural net: 82 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.162 [main] INFO  main.Main - Neural net: 83 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.164 [main] INFO  main.Main - Neural net: 84 | Time alive: 725 | Kills: 0 | Fitness 725.0
+18:27:42.166 [main] INFO  main.Main - Neural net: 85 | Time alive: 647 | Kills: 0 | Fitness 647.0
+18:27:42.168 [main] INFO  main.Main - Neural net: 86 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.169 [main] INFO  main.Main - Neural net: 87 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.171 [main] INFO  main.Main - Neural net: 88 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.172 [main] INFO  main.Main - Neural net: 89 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.178 [main] INFO  main.Main - Neural net: 90 | Time alive: 2549 | Kills: 2 | Fitness 22549.0
+18:27:42.187 [main] INFO  main.Main - Neural net: 91 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.195 [main] INFO  main.Main - Neural net: 92 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.197 [main] INFO  main.Main - Neural net: 93 | Time alive: 544 | Kills: 0 | Fitness 544.0
+18:27:42.198 [main] INFO  main.Main - Neural net: 94 | Time alive: 410 | Kills: 1 | Fitness 10410.0
+18:27:42.207 [main] INFO  main.Main - Neural net: 95 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.215 [main] INFO  main.Main - Neural net: 96 | Time alive: 3641 | Kills: 2 | Fitness 23641.0
+18:27:42.224 [main] INFO  main.Main - Neural net: 97 | Time alive: 3641 | Kills: 0 | Fitness 3641.0
+18:27:42.225 [main] INFO  main.Main - Neural net: 98 | Time alive: 255 | Kills: 0 | Fitness 255.0
+18:27:42.227 [main] INFO  main.Main - Neural net: 99 | Time alive: 544 | Kills: 2 | Fitness 20544.0
+18:27:42.227 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 33641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 30544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 30544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 30544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 23641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 23641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 23641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 23641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 22549.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 20544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 20544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 20544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 13641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 13641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 13641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 11740.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 11289.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 10849.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 10648.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 10544.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 10410.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 10392.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.228 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.229 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3641.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3442.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 3012.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 2997.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 2807.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 2614.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 1684.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 978.0
+
+18:27:42.230 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 849.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 725.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 648.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 647.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 624.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 562.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 544.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 510.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 472.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 377.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 342.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 289.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 287.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 271.0
+
+18:27:42.231 [main] INFO  main.Main - Neural Net: 2344 | Fitness: 255.0
+
