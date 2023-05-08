@@ -57,6 +57,7 @@ public class Board extends JPanel {
 	public Board() {
 		initBoard();
 		gameInit();
+
 	}
 
 	public Board(GameController controller) {
@@ -75,7 +76,7 @@ public class Board extends JPanel {
 		timer = new Timer(Commons.DELAY, new GameCycle());
 		timer.start();
 
-		gameInit();
+		gameInit(); //está duplicado.....
 	}
 
 	private void gameInit() {
@@ -250,7 +251,7 @@ public class Board extends JPanel {
 		double[] output = controller.nextMove(d);
 
 		player.act(output);
-		if (output[3] > 0.5) {
+		if (output[3] > 0.5) { //pq [3]?
 			if (inGame) {
 				//logger.warn("Shooting...");
 				if (!shot.isVisible()) {
