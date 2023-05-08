@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 
+import algoGenetico.Hyperparameters;
 import algoGenetico.PopulationEvo;
 import controllers.GameController;
 import nn.NeuralNetwork;
@@ -36,7 +37,16 @@ public class SpaceInvaders extends JFrame {
 
 	public static void main(String[] args) {
 
-		PopulationEvo populationEvo = new PopulationEvo();
+		Hyperparameters hyperparameters = new Hyperparameters();
+		hyperparameters.setNrGenerations(40);
+		hyperparameters.setNrFitIndividuals(20);
+		hyperparameters.setTournamentSize(4);
+		hyperparameters.setSeed(750);
+		hyperparameters.setHiddenDimSize(15);
+		hyperparameters.setMutationProb(0.3);
+		hyperparameters.setPopulationSize(650);
+
+		PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
 		populationEvo.start();
 		try {
 			populationEvo.join();
@@ -44,7 +54,7 @@ public class SpaceInvaders extends JFrame {
 			logger.info("BEST FITNESS: {}", fittest.getFitness());
 			logger.info(Arrays.toString(fittest.getChromossome()));
 			EventQueue.invokeLater(() -> {
-				showControllerPlaying(fittest, PopulationEvo.SEED);
+				showControllerPlaying(fittest, hyperparameters.getSeed());
 			});
 
 		} catch (InterruptedException e) {

@@ -12,34 +12,38 @@ public class PopulationEvo extends Thread {
 
 	private Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	List<NeuralNetwork> population = new LinkedList<>();
-	private static final int NR_GENERATIONS = 40;
+
 	private static final String BEST_NN_FILE = "best_neural_network.txt";
 	private int curGeneration = 0;
 
-	private static final int NR_FIT_INDIVIDUALS = 20;
-	private static final int TOURNAMENT_SIZE = 4;
-	public  static final int SEED = 750;
-	private static final int HIDDEN_DIM_SIZE = 15;
-	private static final double MUTATION_PROB = 0.3;
-	private static final int POPULATION_SIZE = 650;
-	private static final Random RANDOM = new Random();
+	private Hyperparameters hyperparameters;
+//	public static final int NR_GENERATIONS = 40;
+//	public static final int NR_FIT_INDIVIDUALS = 20;
+//	public static final int TOURNAMENT_SIZE = 4;
+//	public  static final int SEED = 750;
+//	public static final int HIDDEN_DIM_SIZE = 15;
+//	public static final double MUTATION_PROB = 0.3;
+//	public static final int POPULATION_SIZE = 650;
+	public static final Random RANDOM = new Random();
 
-	public PopulationEvo(){
+	public PopulationEvo(Hyperparameters hyperparameters){
+		this.hyperparameters = hyperparameters;
 		createPopulation(); //é basicamente o código do main
 		//enquanto condição de parar não for atingida, cruzar e mutar
-		Collections.sort(population);
-		population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
+		//Collections.sort(population);
+		//population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
+		logger.info(hyperparameters.toString());
 
 	}
 
 	@Override
 	public void run(){
-		while (curGeneration < NR_GENERATIONS) {
+		while (curGeneration < hyperparameters.getNrGenerations()) {
 			population = selectFit();
 			createNewGen();
 			for (NeuralNetwork nn : population) {
 				Board board = new Board(nn);
-				board.setSeed(SEED);
+				board.setSeed(hyperparameters.getSeed());
 				board.run();
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
@@ -57,25 +61,25 @@ public class PopulationEvo extends Thread {
 			// Append the current best neural network and parameters to the file
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
 				writer.newLine();
-				writer.write("--------------------------------------------------------------------------------------------------");
+				writer.write("-------------------------------------------------");
 				writer.newLine();
 				writer.write(String.valueOf(currentBestFitness));
 				writer.newLine();
 				writer.write(Arrays.toString(currentBestNN.getChromossome()));
 				writer.newLine();
-				writer.write("Population Size: " + POPULATION_SIZE);
+				writer.write("Population Size: " + hyperparameters.getPopulationSize());
 				writer.newLine();
-				writer.write("Nr Fittest Individuals: " + NR_FIT_INDIVIDUALS);
+				writer.write("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
 				writer.newLine();
-				writer.write("Mutation Probability: " + MUTATION_PROB);
+				writer.write("Mutation Probability: " + hyperparameters.getMutationProb());
 				writer.newLine();
-				writer.write("Number of Generations: " + NR_GENERATIONS);
+				writer.write("Number of Generations: " + hyperparameters.getNrGenerations());
 				writer.newLine();
-				writer.write("Tournament Size: " + TOURNAMENT_SIZE);
+				writer.write("Tournament Size: " + hyperparameters.getTournamentSize());
 				writer.newLine();
-				writer.write("Hidden Layer Size: " + HIDDEN_DIM_SIZE);
+				writer.write("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
 				writer.newLine();
-				writer.write("Seed: " + SEED);
+				writer.write("Seed: " + hyperparameters.getSeed());
 				writer.newLine();
 			} catch (IOException e) {
 				logger.error("Error appending best neural network and parameters to file", e);
@@ -98,12 +102,12 @@ public class PopulationEvo extends Thread {
 
 		population = new LinkedList<>();
 
-		for (int i = 0; i < POPULATION_SIZE; i++) {
-			NeuralNetwork nn = new NeuralNetwork(HIDDEN_DIM_SIZE);
+		for (int i = 0; i < hyperparameters.getPopulationSize(); i++) {
+			NeuralNetwork nn = new NeuralNetwork(hyperparameters.getHiddenDimSize());
 			population.add(nn);
 			nn.initializeWeights();
 			Board board = new Board(nn);
-			board.setSeed(SEED);
+			board.setSeed(hyperparameters.getSeed());
 			board.run();
 			Double fitness = board.getFitness();
 			nn.setFitness(fitness);
@@ -116,12 +120,12 @@ public class PopulationEvo extends Thread {
 
 	public List<NeuralNetwork> selectFit(){
 		Collections.sort(population);
-		return population.subList(0, NR_FIT_INDIVIDUALS); //vai buscar os FIT_PRCTG individuos mais fit
+		return population.subList(0, hyperparameters.getNrFitIndividuals()); //vai buscar os FIT_PRCTG individuos mais fit
 	}
 
 
 	public void createNewGen() {
-		while (population.size() < POPULATION_SIZE) {
+		while (population.size() < hyperparameters.getPopulationSize()) {
 			// Pick 2 NeuralNetwork (parents) from fit population list
 			NeuralNetwork firstParent = selectParent();
 			NeuralNetwork secondParent = selectParent();
@@ -144,7 +148,7 @@ public class PopulationEvo extends Thread {
 
 
 			// Mutate the child with a certain probability
-			if (Math.random() < MUTATION_PROB) {
+			if (Math.random() < hyperparameters.getMutationProb()) {
 				mutate(child);
 			}
 
@@ -169,7 +173,7 @@ public class PopulationEvo extends Thread {
 
 
 		//create a new NeuralNetwork with the genes of the parents
-		NeuralNetwork child1 = new NeuralNetwork(HIDDEN_DIM_SIZE, child1Genes);
+		NeuralNetwork child1 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child1Genes);
 
 		//TODO: perguntar ao professor fazer 1 ou 2 childs?
 
@@ -180,7 +184,7 @@ public class PopulationEvo extends Thread {
 
 	private NeuralNetwork selectParent(){
 		Collections.shuffle(population); // Randomizar a lista
-		List<NeuralNetwork> selected = population.subList(0, TOURNAMENT_SIZE); // escolher K randoms
+		List<NeuralNetwork> selected = population.subList(0, hyperparameters.getTournamentSize()); // escolher K randoms
 		NeuralNetwork progenitor = null;
 		double maxFitness = Double.NEGATIVE_INFINITY;
 		for (NeuralNetwork nn : selected) {
