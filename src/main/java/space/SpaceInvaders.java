@@ -1,11 +1,10 @@
 package space;
 
 import java.awt.EventQueue;
-import java.util.Arrays;
+import java.io.File;
 
 import javax.swing.JFrame;
 
-import algoGenetico.Hyperparameters;
 import algoGenetico.PopulationEvo;
 import controllers.GameController;
 import nn.NeuralNetwork;
@@ -37,7 +36,14 @@ public class SpaceInvaders extends JFrame {
 
 	public static void main(String[] args) {
 
-		Hyperparameters hyperparameters = new Hyperparameters();
+
+
+		EventQueue.invokeLater(() -> {
+			NeuralNetwork fittest = PopulationEvo.importInitialChamp(46, new File("src/main/java/algoGenetico/NetworkChamp.txt"));
+			showControllerPlaying(fittest, 23);
+		});
+
+		/*Hyperparameters hyperparameters = new Hyperparameters();
 		hyperparameters.setNrGenerations(40);
 		hyperparameters.setNrFitIndividuals(20);
 		hyperparameters.setTournamentSize(4);
@@ -59,7 +65,7 @@ public class SpaceInvaders extends JFrame {
 
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
-		}
+		}*/
 	}
 
 

@@ -215,4 +215,28 @@ public class PopulationEvo extends Thread {
 
 
 
+	public static NeuralNetwork importInitialChamp(int hiddenDimSize, File path){
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(path));
+			String line;
+			if ((line = reader.readLine()) != null) {
+				String genome = line.replace("[", "").replace("]", "");
+				String[] values = genome.split(",");
+				System.out.println("Values" + Arrays.toString(values));
+				double[] genes = new double[values.length];
+				System.out.println("Genes:" + Arrays.toString(genes));
+				for (int i = 0; i < values.length; i++) {
+					genes[i] = Double.parseDouble(values[i]);
+				}
+				System.out.println("Genes:" + Arrays.toString(genes));
+
+				return new NeuralNetwork(hiddenDimSize, genes);
+
+			}
+		} catch (IOException e) {
+			System.err.println("Error importing initial population"+ e);
+		}
+		return null;
+	}
+
 }
