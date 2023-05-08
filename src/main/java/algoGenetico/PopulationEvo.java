@@ -16,6 +16,7 @@ public class PopulationEvo extends Thread {
 	private static final String BEST_NN_FILE = "best_neural_network.txt";
 	private int curGeneration = 0;
 
+	private static final Object fileLock = new Object();
 	private Hyperparameters hyperparameters;
 //	public static final int NR_GENERATIONS = 40;
 //	public static final int NR_FIT_INDIVIDUALS = 20;
@@ -24,7 +25,6 @@ public class PopulationEvo extends Thread {
 //	public static final int HIDDEN_DIM_SIZE = 15;
 //	public static final double MUTATION_PROB = 0.3;
 //	public static final int POPULATION_SIZE = 650;
-	public static final Random RANDOM = new Random();
 
 	public PopulationEvo(Hyperparameters hyperparameters){
 		this.hyperparameters = hyperparameters;
@@ -48,41 +48,43 @@ public class PopulationEvo extends Thread {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
-			logger.info("Generation no: {}", curGeneration);
+			logger.info("Thread: {} | Generation no: {}", Thread.currentThread().getName(), curGeneration);
 		}
 		saveBestNeuralNetwork();
 	}
 
 	public void saveBestNeuralNetwork() {
+		logger.info("Thread: {} | FINISHED... writing file", Thread.currentThread().getName());
 		try {
 			NeuralNetwork currentBestNN = getFittest();
 			double currentBestFitness = currentBestNN.getFitness();
-
-			// Append the current best neural network and parameters to the file
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
-				writer.newLine();
-				writer.write("-------------------------------------------------");
-				writer.newLine();
-				writer.write(String.valueOf(currentBestFitness));
-				writer.newLine();
-				writer.write(Arrays.toString(currentBestNN.getChromossome()));
-				writer.newLine();
-				writer.write("Population Size: " + hyperparameters.getPopulationSize());
-				writer.newLine();
-				writer.write("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
-				writer.newLine();
-				writer.write("Mutation Probability: " + hyperparameters.getMutationProb());
-				writer.newLine();
-				writer.write("Number of Generations: " + hyperparameters.getNrGenerations());
-				writer.newLine();
-				writer.write("Tournament Size: " + hyperparameters.getTournamentSize());
-				writer.newLine();
-				writer.write("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
-				writer.newLine();
-				writer.write("Seed: " + hyperparameters.getSeed());
-				writer.newLine();
-			} catch (IOException e) {
-				logger.error("Error appending best neural network and parameters to file", e);
+			synchronized (fileLock) {
+				// Append the current best neural network and parameters to the file
+				try (BufferedWriter writer = new BufferedWriter(new FileWriter(BEST_NN_FILE, true))) {
+					writer.newLine();
+					writer.write("-------------------------------------------------");
+					writer.newLine();
+					writer.write("Best Fitness: " + currentBestFitness);
+					writer.newLine();
+					writer.write(Arrays.toString(currentBestNN.getChromossome()));
+					writer.newLine();
+					writer.write("Population Size: " + hyperparameters.getPopulationSize());
+					writer.newLine();
+					writer.write("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
+					writer.newLine();
+					writer.write("Mutation Probability: " + hyperparameters.getMutationProb());
+					writer.newLine();
+					writer.write("Number of Generations: " + hyperparameters.getNrGenerations());
+					writer.newLine();
+					writer.write("Tournament Size: " + hyperparameters.getTournamentSize());
+					writer.newLine();
+					writer.write("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
+					writer.newLine();
+					writer.write("Seed: " + hyperparameters.getSeed());
+					writer.newLine();
+				} catch (IOException e) {
+					logger.error("Error appending best neural network and parameters to file", e);
+				}
 			}
 		} catch (Exception e) {
 			logger.error("Error saving best neural network", e);
@@ -162,7 +164,8 @@ public class PopulationEvo extends Thread {
 	private NeuralNetwork crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
 		//pick a random point in the genome
-		int random = RANDOM.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
+		Random randomObject = new Random(hyperparameters.getSeed());
+		int random = randomObject.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
 
 		double[] firstGenes1 = Arrays.copyOfRange(parent1.getChromossome(), 0, random);
 		double[] secondGenes1 = Arrays.copyOfRange(parent2.getChromossome(), random, parent2.getChromossomeSize());
@@ -199,11 +202,12 @@ public class PopulationEvo extends Thread {
 
 
 	public void mutate(NeuralNetwork neuralNetwork) {
+		Random randomObject = new Random(hyperparameters.getSeed());
 		// select two random genes to swap
-		int gene1 = RANDOM.nextInt(0, neuralNetwork.getChromossomeSize());
+		int gene1 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
 		int gene2;
 		do{
-			gene2 = RANDOM.nextInt(0, neuralNetwork.getChromossomeSize());
+			gene2 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
 		}while(gene2 == gene1);
 
 		// swap the values of the two selected genes

@@ -1,0 +1,2 @@
+22:49:04.339 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=45, nrFitIndividuals=7, tournamentSize=1, seed=571, hiddenDimSize=50, mutationProb=0.6792846155268322, populationSize=762}
+22:49:09.209 [Thread-0] INFO  algoGenetico.PopulationEvo - Thread: Thread-0 | Generation no: 1
