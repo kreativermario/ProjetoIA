@@ -23,7 +23,7 @@ public interface Commons {
     int DELAY = 10;
     int PLAYER_WIDTH = 15;
     int PLAYER_HEIGHT = 10;
-    
+
     int STATE_SIZE = Commons.NUMBER_OF_ALIENS_TO_DESTROY * 3 * 2 + 1 + 3;
     int NUM_ACTIONS = 4; // 0 - left, 1 - right, 2 - stop, 3 - fire.
 }

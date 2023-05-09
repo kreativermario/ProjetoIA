@@ -5,8 +5,6 @@ Z
 *logs/spaceinvaders-2023-05-08_11-06-14.log,0\a\0a5a06aaa73186b62df2f80d4a7c4e5222e8e00d
 Z
 *logs/spaceinvaders-2023-05-08_11-05-44.log,6\b\6bac92677893b26406fc574b11959bec88685e9c
-V
-&src/main/java/space/sprite/Sprite.java,f/1/f1df6c2cc64e2a043d0112ea32c4d27bc22a8e2d
 T
 $src/main/java/space/sprite/Shot.java,c/8/c88c0f4f6b8360c6a0176b8647d2eecd18e7e5d5
 V
@@ -19,5 +17,3 @@ _
 /src/main/java/algoGenetico/Hyperparameters.java,9/8/98b5b569fc24f7a941215824e0ad7bdbc5c07b63
 S
 #src/main/java/nn/NeuralNetwork.java,6/a/6a449aa948b51f5396b8827acc025055d63764b3
-N
-src/main/java/space/Board.java,8/0/802dbce0d8102504378bc3f04912f99aaa979911
