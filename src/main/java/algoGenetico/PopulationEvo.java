@@ -35,6 +35,8 @@ public class PopulationEvo {
 	}
 
 	private void init(){
+		long startTime = System.currentTimeMillis();
+
 		while (curGeneration < hyperparameters.getNrGenerations()) {
 			population = selectFit();
 			createNewGen();
@@ -45,11 +47,18 @@ public class PopulationEvo {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
-			logger.info("Thread: {} | Generation no: {}", Thread.currentThread().getName(), curGeneration);
+			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
+					hyperparameters.getNrGenerations());
 		}
+
+		long endTime = System.currentTimeMillis();
+		long duration = endTime - startTime;
 		logger.info("Thread: {} | Fittest: {}", Thread.currentThread().getName(), getFittest().getFitness());
+		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
+
 		saveBestNeuralNetwork();
 	}
+
 
 	public synchronized void saveBestNeuralNetwork() {
 		logger.info("Thread: {} | GOING TO WRITE... writing file", Thread.currentThread().getName());
