@@ -67,16 +67,17 @@ public class Player extends Sprite {
 
 		x += dx;
 
-		if (x <= 2) {
+		int cornerZone = (int)(Commons.BOARD_WIDTH * 0.05); // 5% of board width
 
-			x = 2;
+		if (x <= cornerZone) {
+			x = cornerZone;
 		}
 
-		if (x >= Commons.BOARD_WIDTH - 2 * width) {
-
-			x = Commons.BOARD_WIDTH - 2 * width;
+		if (x >= Commons.BOARD_WIDTH - cornerZone - width) {
+			x = Commons.BOARD_WIDTH - cornerZone - width;
 		}
 	}
+
 
 //	public void keyPressed(KeyEvent e) {
 //

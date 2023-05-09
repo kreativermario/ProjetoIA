@@ -16,8 +16,8 @@ public class HyperparameterTuning {
     private final Logger logger = LoggerFactory.getLogger(HyperparameterTuning.class);
 
     private void runMultiple(){
-        int numRuns = 100; // number of runs with different settings
-        int numThreads = 5; // number of threads in the thread pool
+        int numRuns = 1000; // number of runs with different settings
+        int numThreads = 15; // number of threads in the thread pool
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         List<Future<?>> futures = new ArrayList<>();
         Random random = new Random();
