@@ -1,11 +1,0 @@
-
-f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ë÷
-k	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’ûÍáıÿÿÿÿ
-X	java:S1253"<This block of commented-out lines of code should be removed.(¦›ŸÈ8Öªá¸ÿ0
-]	java:S1257"<This block of commented-out lines of code should be removed.(İ¯üĞşÿÿÿÿ8Öªá¸ÿ0
-X	java:S125;"<This block of commented-out lines of code should be removed.(çÈ“š8Öªá¸ÿ0
-Q	java:S125Q"<This block of commented-out lines of code should be removed.(ºá
-Q
-java:S1128	"4Remove this unused import 'java.awt.event.KeyEvent'.(¬ğİÍ8×š‘ÿ0
-G
-java:S1068"*Remove this unused "logger" private field.(Øï•ƒ8Øªá¸ÿ0

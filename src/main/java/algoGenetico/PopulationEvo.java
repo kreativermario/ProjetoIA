@@ -7,15 +7,19 @@ import space.Board;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-public class PopulationEvo extends Thread {
+public class PopulationEvo {
 
 	private static final String BEST_NN_FILE = "best_neural_network.txt";
 
 	private final Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
-	private List<NeuralNetwork> population = new LinkedList<>();
+	private List<NeuralNetwork> population = new ArrayList<>();
 	private int curGeneration = 0;
 	private final Hyperparameters hyperparameters;
+	private final Random randomObject;
 //	public static final int NR_GENERATIONS = 40;
 //	public static final int NR_FIT_INDIVIDUALS = 20;
 //	public static final int TOURNAMENT_SIZE = 4;
@@ -26,19 +30,19 @@ public class PopulationEvo extends Thread {
 
 	public PopulationEvo(Hyperparameters hyperparameters){
 		this.hyperparameters = hyperparameters;
-		createPopulation(); //é basicamente o código do main
-		//enquanto condição de parar não for atingida, cruzar e mutar
-		//Collections.sort(population);
-		//population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
-		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
-
+		this.randomObject = new Random(hyperparameters.getSeed());
 	}
 
-	@Override
-	public void run(){
+	public void init(){
+		createPopulation(); //é basicamente o código do main
+		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
+		long startTime = System.currentTimeMillis();
+
+
 		while (curGeneration < hyperparameters.getNrGenerations()) {
-			population = selectFit();
 			createNewGen();
+
+			// Parallelize fitness evaluations
 			for (NeuralNetwork nn : population) {
 				Board board = new Board(nn);
 				board.setSeed(hyperparameters.getSeed());
@@ -46,13 +50,20 @@ public class PopulationEvo extends Thread {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
-			logger.info("Thread: {} | Generation no: {}", Thread.currentThread().getName(), curGeneration);
+			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
+					hyperparameters.getNrGenerations());
 		}
+
+		long endTime = System.currentTimeMillis();
+		long duration = endTime - startTime;
 		logger.info("Thread: {} | Fittest: {}", Thread.currentThread().getName(), getFittest().getFitness());
+		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
+
 		saveBestNeuralNetwork();
 	}
 
-	public synchronized void saveBestNeuralNetwork() {
+
+	private synchronized void saveBestNeuralNetwork() {
 		logger.info("Thread: {} | GOING TO WRITE... writing file", Thread.currentThread().getName());
 		NeuralNetwork currentBestNN = getFittest();
 		double currentBestFitness = currentBestNN.getFitness();
@@ -64,7 +75,7 @@ public class PopulationEvo extends Thread {
 			writer.println(Arrays.toString(currentBestNN.getChromossome()));
 			//logger.debug("Thread: {} wrote CHROMOSSOME\n{}", Thread.currentThread().getName(), currentBestNN.getChromossome());
 			writer.println("Population Size: " + hyperparameters.getPopulationSize());
-			writer.println("Nr Fittest Individuals: " + hyperparameters.getNrFitIndividuals());
+			writer.println("Elitism ratio: " + hyperparameters.getElitismRatio());
 			writer.println("Mutation Probability: " + hyperparameters.getMutationProb());
 			writer.println("Number of Generations: " + hyperparameters.getNrGenerations());
 			writer.println("Tournament Size: " + hyperparameters.getTournamentSize());
@@ -83,7 +94,7 @@ public class PopulationEvo extends Thread {
 
 
 	//create a population of individual  methods
-	public void createPopulation() {
+	private void createPopulation() {
 
 		population = new LinkedList<>();
 
@@ -103,13 +114,12 @@ public class PopulationEvo extends Thread {
 	}
 
 
-	public List<NeuralNetwork> selectFit(){
+	private void createNewGen() {
+		// Implementing Elitism. Directly copying the best individuals.
 		Collections.sort(population);
-		return population.subList(0, hyperparameters.getNrFitIndividuals()); //vai buscar os FIT_PRCTG individuos mais fit
-	}
+		int elitismCount = (int)(hyperparameters.getElitismRatio() * hyperparameters.getPopulationSize());
+		List<NeuralNetwork> newPopulation = new ArrayList<>(population.subList(0, elitismCount));
 
-
-	public void createNewGen() {
 		while (population.size() < hyperparameters.getPopulationSize()) {
 			// Pick 2 NeuralNetwork (parents) from fit population list
 			NeuralNetwork firstParent = selectParent();
@@ -128,26 +138,23 @@ public class PopulationEvo extends Thread {
 				secondParent = selectParent();
 			}
 
-			// Generate a new child using crossover
-			NeuralNetwork child = crossover(firstParent, secondParent);
-
-
-			// Mutate the child with a certain probability
-			if (Math.random() < hyperparameters.getMutationProb()) {
-				mutate(child);
+			List<NeuralNetwork> children = crossover(firstParent, secondParent);
+			for(NeuralNetwork child : children){
+				// Mutate the child with a certain probability
+				if (Math.random() < hyperparameters.getMutationProb()) {
+					mutate(child);
+				}
+				// Add the new child to the population
+				population.add(child);
 			}
-
-			// Add the new child to the population
-			population.add(child);
 		}
+		this.population = newPopulation;
 		this.curGeneration++;
 	}
 
 
-	private NeuralNetwork crossover(NeuralNetwork parent1, NeuralNetwork parent2){
+	private List<NeuralNetwork> crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
-		//pick a random point in the genome
-		Random randomObject = new Random(hyperparameters.getSeed());
 		int random = randomObject.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
 
 		double[] firstGenes1 = Arrays.copyOfRange(parent1.getChromossome(), 0, random);
@@ -157,47 +164,47 @@ public class PopulationEvo extends Thread {
 		if (random >= 0) System.arraycopy(firstGenes1, 0, child1Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes1, 0, child1Genes, random, size - random);
 
-
 		//create a new NeuralNetwork with the genes of the parents
 		NeuralNetwork child1 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child1Genes);
 
-		//TODO: perguntar ao professor fazer 1 ou 2 childs?
+		// Second child creation
+		double[] firstGenes2 = Arrays.copyOfRange(parent2.getChromossome(), 0, random);
+		double[] secondGenes2 = Arrays.copyOfRange(parent1.getChromossome(), random, parent1.getChromossomeSize());
 
-		//logger.info(population.indexOf(parent1) + " and " + population.indexOf(parent2) + " crossed");
-		return child1;
+		double[] child2Genes = new double[size];
+		if (random >= 0) System.arraycopy(firstGenes2, 0, child2Genes, 0, random);
+		if (size - random >= 0) System.arraycopy(secondGenes2, 0, child2Genes, random, size - random);
+
+		//create a new NeuralNetwork with the genes of the parents
+		NeuralNetwork child2 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child2Genes);
+
+		List<NeuralNetwork> children = new ArrayList<>();
+		children.add(child1);
+		children.add(child2);
+
+		return children;
 	}
 
 
 	private NeuralNetwork selectParent(){
-		Collections.shuffle(population); // Randomizar a lista
-		List<NeuralNetwork> selected = population.subList(0, hyperparameters.getTournamentSize()); // escolher K randoms
-		NeuralNetwork progenitor = null;
-		double maxFitness = Double.NEGATIVE_INFINITY;
-		for (NeuralNetwork nn : selected) {
-			if (nn.getFitness() > maxFitness) {
-				progenitor = nn;
-				maxFitness = nn.getFitness();
-			}
+		List<NeuralNetwork> selected = new ArrayList<>();
+		for (int i = 0; i < hyperparameters.getTournamentSize(); i++) {
+			selected.add(population.get(randomObject.nextInt(population.size())));
 		}
-		return progenitor;
-
+		selected.sort(Comparator.comparingDouble(NeuralNetwork::getFitness));
+		return selected.get(0);
 	}
 
 
 	public void mutate(NeuralNetwork neuralNetwork) {
-		Random randomObject = new Random(hyperparameters.getSeed());
 		// select two random genes to swap
-		int gene1 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
-		int gene2;
-		do{
-			gene2 = randomObject.nextInt(0, neuralNetwork.getChromossomeSize());
-		}while(gene2 == gene1);
+		int gene1 = randomObject.nextInt(neuralNetwork.getChromossomeSize());
+		int gene2 = randomObject.nextInt(neuralNetwork.getChromossomeSize());
 
 		// swap the values of the two selected genes
 		double temp = neuralNetwork.getChromossome()[gene1];
 		neuralNetwork.getChromossome()[gene1] = neuralNetwork.getChromossome()[gene2];
 		neuralNetwork.getChromossome()[gene2] = temp;
-
 	}
 
 
