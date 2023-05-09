@@ -1,3 +1,4 @@
+/*
 package algoGenetico;
 
 import nn.NeuralNetwork;
@@ -52,7 +53,7 @@ public class HyperparametersEvo {
 
     private List<Hyperparameters> selectFit(){
         Collections.sort(population);
-        return population.subList(0, hyperparameters.getNrFitIndividuals());
+        return population.subList(0, hyperparameters.getElitismRatio());
     }
 
     private void initializePopulation() {
@@ -218,3 +219,4 @@ public class HyperparametersEvo {
     }
 
 }
+*/

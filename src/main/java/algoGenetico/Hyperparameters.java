@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Hyperparameters implements Comparable<Hyperparameters>{
     private int nrGenerations;
-    private int nrFitIndividuals;
+    private double elitismRatio;
     private int tournamentSize;
     private int seed;
     private int hiddenDimSize;
@@ -13,10 +13,10 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
     private double fitness;
     public static final int CHROMOSSOME_SIZE = 8;
 
-    public Hyperparameters(int nrGenerations, int nrFitIndividuals, int tournamentSize, int seed, int hiddenDimSize,
+    public Hyperparameters(int nrGenerations, double elitismRatio, int tournamentSize, int seed, int hiddenDimSize,
                            double mutationProb, int populationSize){
         this.nrGenerations = nrGenerations;
-        this.nrFitIndividuals = nrFitIndividuals;
+        this.elitismRatio = elitismRatio;
         this.tournamentSize = tournamentSize;
         this.seed = seed;
         this.hiddenDimSize = hiddenDimSize;
@@ -31,7 +31,7 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
     public double[] getChromossome() {
         return new double[] {
                 nrGenerations,
-                nrFitIndividuals,
+                elitismRatio,
                 tournamentSize,
                 seed,
                 hiddenDimSize,
@@ -46,7 +46,7 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
             throw new IllegalArgumentException("Invalid chromosome size: " + chromosome.length);
         }
         this.nrGenerations = (int) chromosome[0];
-        this.nrFitIndividuals = (int) chromosome[1];
+        this.elitismRatio = (double) chromosome[1];
         this.tournamentSize = (int) chromosome[2];
         this.seed = (int) chromosome[3];
         this.hiddenDimSize = (int) chromosome[4];
@@ -60,10 +60,9 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
         return nrGenerations;
     }
 
-    public int getNrFitIndividuals() {
-        return nrFitIndividuals;
+    public double getElitismRatio() {
+        return elitismRatio;
     }
-
 
     public int getTournamentSize() {
         return tournamentSize;
@@ -97,7 +96,7 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
     public String toString() {
         return "Hyperparameters{" +
                 "nrGenerations=" + nrGenerations +
-                ", nrFitIndividuals=" + nrFitIndividuals +
+                ", elitismRatio=" + elitismRatio +
                 ", tournamentSize=" + tournamentSize +
                 ", seed=" + seed +
                 ", hiddenDimSize=" + hiddenDimSize +
@@ -116,7 +115,7 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Hyperparameters that = (Hyperparameters) o;
-        return nrGenerations == that.nrGenerations && nrFitIndividuals == that.nrFitIndividuals
+        return nrGenerations == that.nrGenerations && elitismRatio == that.elitismRatio
                 && tournamentSize == that.tournamentSize && seed == that.seed && hiddenDimSize == that.hiddenDimSize
                 && Double.compare(that.mutationProb, mutationProb) == 0 && populationSize == that.populationSize
                 && Double.compare(that.fitness, fitness) == 0;
@@ -124,7 +123,7 @@ public class Hyperparameters implements Comparable<Hyperparameters>{
 
     @Override
     public int hashCode() {
-        return Objects.hash(nrGenerations, nrFitIndividuals, tournamentSize,
+        return Objects.hash(nrGenerations, elitismRatio, tournamentSize,
                 seed, hiddenDimSize, mutationProb, populationSize, fitness);
     }
 }
