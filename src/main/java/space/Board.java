@@ -356,10 +356,8 @@ public class Board extends JPanel {
 
 			int shot = generator.nextInt(400);
 			Alien.Bomb bomb = alien.getBomb();
-			int playerX = player.getX();
-			boolean playerInExtremeCorners = playerX < (Commons.BOARD_WIDTH * 0.1) || playerX > (Commons.BOARD_WIDTH * 0.9); // Adjust these values as needed
 
-			if ((shot == Commons.CHANCE || alien.getX() == player.getX() || (playerInExtremeCorners && generator.nextInt(100) < 50)) && alien.isVisible() && bomb.isDestroyed()) {
+			if ((shot == Commons.CHANCE || alien.getX() == player.getX()) && alien.isVisible() && bomb.isDestroyed()) {
 
 				bomb.setDestroyed(false);
 				bomb.setX(alien.getX());
@@ -369,6 +367,7 @@ public class Board extends JPanel {
 
 			int bombX = bomb.getX();
 			int bombY = bomb.getY();
+			int playerX = player.getX();
 			int playerY = player.getY();
 
 			if (player.isVisible() && !bomb.isDestroyed()) {

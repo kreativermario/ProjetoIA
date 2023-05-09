@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.*;
 
@@ -15,12 +16,13 @@ public class HyperparameterTuning {
     private final Logger logger = LoggerFactory.getLogger(HyperparameterTuning.class);
 
     private void runMultiple(){
-        int numRuns = 5000; // number of runs with different settings
-        int numThreads = 4; // number of threads in the thread pool
+        int numRuns = 5; // number of runs with different settings
+        int numThreads = 10; // number of threads in the thread pool
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         List<Future<?>> futures = new ArrayList<>();
         Random random = new Random();
-
+        ConcurrentMap<Integer, Double> seedFitnessMap = new ConcurrentHashMap<>();
+        int seed = random.nextInt(6000);
         for (int i = 0; i < numRuns; i++) {
             futures.add(executor.submit(() -> {
                 // Randomize hyperparameters
@@ -30,7 +32,6 @@ public class HyperparameterTuning {
                 int nrGenerations = random.nextInt(100) + 1;
                 int tournamentSize = random.nextInt(nrFitIndividuals) + 1;
                 int hiddenDimSize = random.nextInt(50) + 1;
-                int seed = random.nextInt(6000);
 
                 Hyperparameters hyperparameters = new Hyperparameters();
                 hyperparameters.setNrGenerations(nrGenerations);
@@ -42,7 +43,8 @@ public class HyperparameterTuning {
                 hyperparameters.setPopulationSize(populationSize);
 
                 PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
-                populationEvo.start();
+                double bestFitness = populationEvo.getFittest().getFitness();
+                seedFitnessMap.put(seed, bestFitness);
             }));
         }
         // Wait for all tasks to finish
@@ -55,6 +57,11 @@ public class HyperparameterTuning {
         }
 
         executor.shutdown();
+        Map.Entry<Integer, Double> bestEntry = seedFitnessMap.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow();
+        logger.info("Best seed: " + bestEntry.getKey() + ", Best Fitness: " + bestEntry.getValue());
+
 
     }
 
@@ -79,7 +86,6 @@ public class HyperparameterTuning {
         hyperparameters.setPopulationSize(populationSize);
 
         PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
-        populationEvo.start();
     }
 
 

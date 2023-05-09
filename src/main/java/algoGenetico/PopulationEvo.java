@@ -8,7 +8,7 @@ import space.Board;
 import java.io.*;
 import java.util.*;
 
-public class PopulationEvo extends Thread {
+public class PopulationEvo {
 
 	private static final String BEST_NN_FILE = "best_neural_network.txt";
 
@@ -31,11 +31,10 @@ public class PopulationEvo extends Thread {
 		//Collections.sort(population);
 		//population.forEach(e -> logger.info("Inicial Fitness: {}", e.getFitness()));
 		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
-
+		init();
 	}
 
-	@Override
-	public void run(){
+	private void init(){
 		while (curGeneration < hyperparameters.getNrGenerations()) {
 			population = selectFit();
 			createNewGen();
