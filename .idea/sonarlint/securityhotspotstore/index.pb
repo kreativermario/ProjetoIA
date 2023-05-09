@@ -9,18 +9,10 @@ V
 &src/main/java/space/sprite/Sprite.java,f/1/f1df6c2cc64e2a043d0112ea32c4d27bc22a8e2d
 T
 $src/main/java/space/sprite/Shot.java,c/8/c88c0f4f6b8360c6a0176b8647d2eecd18e7e5d5
-V
-&src/main/java/space/sprite/Player.java,8/7/874fbdaf160d0374fe1718425a78259483e172d9
 Z
 *logs/spaceinvaders-2023-05-08_20-56-21.log,e/1/e1361892aa503a1fe0a673ba704b0bd92882925b
-U
-%src/main/java/space/sprite/Alien.java,8/f/8f6ad935b4c3118c9568785a598644202542ed3a
 Z
 *logs/spaceinvaders-2023-05-08_23-50-10.log,b/7/b798a3698e1f167a5385a0259a56555f14717aa3
-P
- src/main/java/space/Commons.java,4/5/45fbb036da8cb06669ed2b9f6055803ec0297740
-N
-src/main/java/space/Board.java,8/0/802dbce0d8102504378bc3f04912f99aaa979911
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 \
@@ -35,7 +27,11 @@ Z
 *logs/spaceinvaders-2023-05-09_08-09-23.log,7/d/7dfdb09c716390d6c72cc6928c187fb750c7a2f7
 Z
 *logs/spaceinvaders-2023-05-09_08-07-50.log,2/b/2bbca23003b86c8585516149db068569bd578c7d
-[
-+src/main/java/algoGenetico/NetworkChamp.txt,5/9/59eaf8a90008c1ac9175d5ac027141f4b134e242
+b
+2src/main/java/algoGenetico/HyperparametersEvo.java,2/a/2adf2fbcc3096ef85ea81196b07e2fa613097449
+_
+/src/main/java/algoGenetico/Hyperparameters.java,9/8/98b5b569fc24f7a941215824e0ad7bdbc5c07b63
+U
+%src/main/java/space/sprite/Alien.java,8/f/8f6ad935b4c3118c9568785a598644202542ed3a
 S
 #src/main/java/nn/NeuralNetwork.java,6/a/6a449aa948b51f5396b8827acc025055d63764b3

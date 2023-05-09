@@ -25,10 +25,10 @@ public class HyperparameterTuning {
             futures.add(executor.submit(() -> {
                 // Randomize hyperparameters
                 int populationSize = random.nextInt(900) + 100;
-                double elitismRatio = random.nextDouble(); // selecionar 20%
+                double elitismRatio = 0.05 + (0.2 - 0.05) * random.nextDouble(); // selecionar x %
                 double mutationProb = 0.01 + (0.5 - 0.01) * random.nextDouble(); // Range between 0.01 and 0.1
                 int nrGenerations = random.nextInt(450) + 50; // Range between 50 and 500
-                int tournamentSize = random.nextInt(6) + 2; // Range between 2 and 7
+                int tournamentSize = random.nextInt(25) + 2; // Range between 2 and 7
                 int hiddenDimSize = random.nextInt(50) + 1;
                 int seed = random.nextInt(6000);
 

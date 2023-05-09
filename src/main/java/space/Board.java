@@ -431,6 +431,9 @@ public class Board extends JPanel {
 
 	public Double getFitness() {
 		double fitness = (double) (getDeaths() * 10000 + getTime());
+		if(deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY){
+			fitness += 50000.0;
+		}
 		// System.out.println(fitness);
 		return fitness;
 	}
