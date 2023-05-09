@@ -128,23 +128,21 @@ public class PopulationEvo extends Thread {
 				secondParent = selectParent();
 			}
 
-			// Generate a new child using crossover
-			NeuralNetwork child = crossover(firstParent, secondParent);
-
-
-			// Mutate the child with a certain probability
-			if (Math.random() < hyperparameters.getMutationProb()) {
-				mutate(child);
+			List<NeuralNetwork> children = crossover(firstParent, secondParent);
+			for(NeuralNetwork child : children){
+				// Mutate the child with a certain probability
+				if (Math.random() < hyperparameters.getMutationProb()) {
+					mutate(child);
+				}
+				// Add the new child to the population
+				population.add(child);
 			}
-
-			// Add the new child to the population
-			population.add(child);
 		}
 		this.curGeneration++;
 	}
 
 
-	private NeuralNetwork crossover(NeuralNetwork parent1, NeuralNetwork parent2){
+	private List<NeuralNetwork> crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
 		//pick a random point in the genome
 		Random randomObject = new Random(hyperparameters.getSeed());
@@ -157,14 +155,25 @@ public class PopulationEvo extends Thread {
 		if (random >= 0) System.arraycopy(firstGenes1, 0, child1Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes1, 0, child1Genes, random, size - random);
 
-
 		//create a new NeuralNetwork with the genes of the parents
 		NeuralNetwork child1 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child1Genes);
 
-		//TODO: perguntar ao professor fazer 1 ou 2 childs?
+		// Second child creation
+		double[] firstGenes2 = Arrays.copyOfRange(parent2.getChromossome(), 0, random);
+		double[] secondGenes2 = Arrays.copyOfRange(parent1.getChromossome(), random, parent1.getChromossomeSize());
 
-		//logger.info(population.indexOf(parent1) + " and " + population.indexOf(parent2) + " crossed");
-		return child1;
+		double[] child2Genes = new double[size];
+		if (random >= 0) System.arraycopy(firstGenes2, 0, child2Genes, 0, random);
+		if (size - random >= 0) System.arraycopy(secondGenes2, 0, child2Genes, random, size - random);
+
+		//create a new NeuralNetwork with the genes of the parents
+		NeuralNetwork child2 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child2Genes);
+
+		List<NeuralNetwork> children = new ArrayList<>();
+		children.add(child1);
+		children.add(child2);
+
+		return children;
 	}
 
 

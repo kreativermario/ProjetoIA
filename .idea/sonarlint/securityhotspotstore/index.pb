@@ -11,13 +11,9 @@ T
 $src/main/java/space/sprite/Shot.java,c/8/c88c0f4f6b8360c6a0176b8647d2eecd18e7e5d5
 V
 &src/main/java/space/sprite/Player.java,8/7/874fbdaf160d0374fe1718425a78259483e172d9
-U
-%src/main/java/space/sprite/Alien.java,8/f/8f6ad935b4c3118c9568785a598644202542ed3a
 Z
 *logs/spaceinvaders-2023-05-08_20-56-21.log,e/1/e1361892aa503a1fe0a673ba704b0bd92882925b
 _
 /src/main/java/algoGenetico/Hyperparameters.java,9/8/98b5b569fc24f7a941215824e0ad7bdbc5c07b63
 S
 #src/main/java/nn/NeuralNetwork.java,6/a/6a449aa948b51f5396b8827acc025055d63764b3
-N
-src/main/java/space/Board.java,8/0/802dbce0d8102504378bc3f04912f99aaa979911

@@ -5,7 +5,7 @@ public interface Commons {
     int BOARD_WIDTH = 358;
     int BOARD_HEIGHT = 350;
     int IMAGE_SIZE = 358*322;
-    int BORDER_RIGHT = 30;
+    int BORDER_RIGHT = 7;
     int BORDER_LEFT = 5;
 
     int GROUND = 290;
