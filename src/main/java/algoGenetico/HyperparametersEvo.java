@@ -201,18 +201,18 @@ public class HyperparametersEvo {
     }
 
     public static void main(String[] args) {
-        Random random = new Random(100);
-        // Randomize hyperparameters
-        int nrGenerations = random.nextInt(200) + 1;
-        int populationSize = random.nextInt(900) + 100;
-        int nrFitIndividuals = random.nextInt(populationSize / 2) + 1;
-        int tournamentSize = random.nextInt(nrFitIndividuals) + 1;
-        int seed = random.nextInt(6000);
-        int hiddenDimSize = random.nextInt(50) + 1;
-        double mutationProb = random.nextDouble();
+            Random random = new Random(100);
+//        // Randomize hyperparameters
+//        int nrGenerations = random.nextInt(200) + 1;
+//        int populationSize = random.nextInt(900) + 100;
+//        int nrFitIndividuals = random.nextInt(populationSize / 2) + 1;
+//        int tournamentSize = random.nextInt(nrFitIndividuals) + 1;
+            int seed = random.nextInt(6000);
+//        int hiddenDimSize = random.nextInt(50) + 1;
+//        double mutationProb = random.nextDouble();
 
-        Hyperparameters hp = new Hyperparameters(nrGenerations, nrFitIndividuals, tournamentSize
-                , seed, hiddenDimSize, mutationProb, populationSize);
+        Hyperparameters hp = new Hyperparameters(5, 20, 3
+                , seed, 5, 0.2, 50);
 
         HyperparametersEvo hyperparametersEvo = new HyperparametersEvo(hp);
     }
