@@ -39,9 +39,9 @@ public class SpaceInvaders extends JFrame {
 
 
 		EventQueue.invokeLater(() -> {
-			NeuralNetwork fittest = PopulationEvo.importInitialChamp(14,
+			NeuralNetwork fittest = PopulationEvo.importInitialChamp(33,
 					new File("src/main/java/algoGenetico/NetworkChamp.txt"));
-			showControllerPlaying(fittest, 4296);
+			showControllerPlaying(fittest, 2065);
 		});
 
 		/*Hyperparameters hyperparameters = new Hyperparameters();

@@ -67,7 +67,7 @@ public class Player extends Sprite {
 
 		x += dx;
 
-		int cornerZone = (int)(Commons.BOARD_WIDTH * 0.05); // 5% of board width
+		int cornerZone = (int)(Commons.BOARD_WIDTH * 0.05); // 1% of board width
 
 		if (x <= cornerZone) {
 			x = cornerZone;

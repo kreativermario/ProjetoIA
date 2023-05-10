@@ -355,15 +355,9 @@ public class Board extends JPanel {
 		for (Alien alien : aliens) {
 
 			int shot = generator.nextInt(400);
-			int cornerShot = 0;
-
-			if (alien.getX() == Commons.BOARD_WIDTH - Commons.BORDER_RIGHT || alien.getX() == Commons.BORDER_LEFT) {
-				cornerShot = generator.nextInt(10); //alterar p 1 para disparar sempre nos cantos
-			}
-
 			Alien.Bomb bomb = alien.getBomb();
 
-			if ((cornerShot == Commons.CHANCE || shot == Commons.CHANCE || alien.getX() == player.getX()) && alien.isVisible() && bomb.isDestroyed()) {
+			if ((shot == Commons.CHANCE || alien.getX() == player.getX()) && alien.isVisible() && bomb.isDestroyed()) {
 
 				bomb.setDestroyed(false);
 				bomb.setX(alien.getX());

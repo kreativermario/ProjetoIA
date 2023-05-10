@@ -6,14 +6,13 @@ import org.slf4j.LoggerFactory;
 import space.Board;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class PopulationEvo {
 
-	private static final String BEST_NN_FILE = "best_neural_network.txt";
+	private static final String BEST_NN_FILE = "best_neural_network-no-player-corners.txt";
 
 	private final Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	private List<NeuralNetwork> population = new ArrayList<>();
@@ -69,7 +68,10 @@ public class PopulationEvo {
 		double currentBestFitness = currentBestNN.getFitness();
 
 		try (PrintWriter writer = new PrintWriter(new FileWriter(BEST_NN_FILE, true))) {
+			LocalDateTime now = LocalDateTime.now();
+			String formattedDateTime = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss:SSS"));
 			writer.println("-------------------------------------------------");
+			writer.println("Time: " + formattedDateTime);
 			writer.println("Best Fitness: " + currentBestFitness);
 			logger.info("Thread: {} | WROTE Fittest: {}", Thread.currentThread().getName(), currentBestFitness);
 			writer.println(Arrays.toString(currentBestNN.getChromossome()));
