@@ -28,7 +28,7 @@ public interface Commons {
     int NUM_ACTIONS = 4; // 0 - left, 1 - right, 2 - stop, 3 - fire.
     int POINTS_PER_KILL = 20000;
     int POINTS_PER_WIN = 500000;
-    int POINTS_PER_MOVEMENT = 70;
-    int PENALTY_POINTS = 40;
+    int POINTS_PER_MOVEMENT = 170;
+    int PENALTY_POINTS = 30;
     int MAX_CORNER_TICKS = 3;
 }

@@ -61,7 +61,7 @@ public class Player extends Sprite {
 		}
 		if (key == 0) {
 			//logger.info("Moving Stop...");
-			removePoints(Commons.PENALTY_POINTS);
+			removePoints(Commons.PENALTY_POINTS/2);
 			dx = 0;
 		}
 	}
