@@ -355,7 +355,7 @@ public class Board extends JPanel {
 		for (Alien alien : aliens) {
 			int distanceFromCenter = (Commons.BOARD_WIDTH-Commons.BORDER_LEFT-Commons.BORDER_RIGHT)/2 - alien.getX();
 			//logger.debug("Distance from center: " + distanceFromCenter + " | Alien X: " + alien.getX() + " | Alien Y: " + alien.getY());
-			int probShot = generator.nextInt( (800/  (Math.abs( distanceFromCenter ) +1)) );
+			int probShot = generator.nextInt( (1500/  (Math.abs( distanceFromCenter ) +1)) );
 			//probShot = 1;
 			Alien.Bomb bomb = alien.getBomb();
 
@@ -432,9 +432,10 @@ public class Board extends JPanel {
 	}
 
 	public Double getFitness() {
-		double fitness =  (getDeaths() * 10000 + getTime());
+		double fitness =  (getDeaths() * 10000 + getTime() + player.movPoints());
 		if(deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY){
 			fitness += 50000.0;
+			logger.debug("Game won!");
 		}
 		// System.out.println(fitness);
 		return fitness;

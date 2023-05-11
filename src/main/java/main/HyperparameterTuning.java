@@ -4,6 +4,8 @@ import algoGenetico.Hyperparameters;
 import algoGenetico.PopulationEvo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -58,7 +60,7 @@ public class HyperparameterTuning {
             futures.add(executor.submit(() -> {
                 // Randomize hyperparameters
                 int populationSize = random.nextInt(900) + 100;
-                double elitismRatio = 0.15 + (0.2 - 0.15) * random.nextDouble(); // selecionar x %
+                double elitismRatio = 0.15 + (0.1 - 0.15) * random.nextDouble(); // selecionar x %
                 double mutationProb = 0.01 + (0.5 - 0.01) * random.nextDouble(); // Range between 0.01 and 0.1
                 int nrGenerations = random.nextInt(500) + 50; // Range between 50 and 500
                 int tournamentSize = random.nextInt(25) + 2; // Range between 2 and 7
@@ -70,6 +72,7 @@ public class HyperparameterTuning {
 
                 PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
                 populationEvo.init();
+                //populationEvo.initFrom(PopulationEvo.importInitialChamp(8, new File("src/main/java/algoGenetico/NetworkChamp.txt")));
             }));
         }
 
@@ -91,7 +94,7 @@ public class HyperparameterTuning {
     public static void main(String[] args) throws InterruptedException {
         HyperparameterTuning hyperparameterTuning = new HyperparameterTuning();
 //        hyperparameterTuning.runSingle();
-        //hyperparameterTuning.runMultiple();
-        hyperparameterTuning.runMultipleSameSeed(100, 25, 2065);
+        hyperparameterTuning.runMultiple();
+        //hyperparameterTuning.runMultipleSameSeed(100, 25, 2065);
     }
 }

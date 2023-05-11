@@ -12,6 +12,7 @@ public class Player extends Sprite {
 
 	private Logger logger = LoggerFactory.getLogger(Player.class);
 	private int width;
+	private int movePoints;
 
 	public Player() {
 
@@ -31,6 +32,8 @@ public class Player extends Sprite {
 
 		int START_Y = 280;
 		setY(START_Y);
+
+		movePoints = 0;
 	}
 
 	private int maxIndex(double[] output) {
@@ -49,15 +52,21 @@ public class Player extends Sprite {
 		int key = maxIndex(output);
 		if (key == 1) {
 			//logger.info("Moving Left...");
+			movePoints += 30;
 			dx = -2;
 		}
 		if (key == 2) {
 			//logger.info("Moving Right...");
+			movePoints += 30;
 			dx = 2;
 		}
 		if (key == 0) {
 			//logger.info("Moving Stop...");
+			movePoints -= 30;
 			dx = 0;
+			//make board fitness lower
+
+
 		}
 	}
 
@@ -119,5 +128,9 @@ public class Player extends Sprite {
 
 	public void stop() {
 		dx = 0;
+	}
+
+	public int movPoints() {
+		return movePoints;
 	}
 }
