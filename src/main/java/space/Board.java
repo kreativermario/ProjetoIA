@@ -296,39 +296,39 @@ public class Board extends JPanel {
 		// aliens
 
 		for (Alien alien : aliens) {
+			if (alien.isVisible()) {
+				int x = alien.getX();
 
-			int x = alien.getX();
+				if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
 
-			if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
+					direction = -1;
 
-				direction = -1;
+					Iterator<Alien> i1 = aliens.iterator();
 
-				Iterator<Alien> i1 = aliens.iterator();
+					while (i1.hasNext()) {
 
-				while (i1.hasNext()) {
+						Alien a2 = i1.next();
+						a2.setY(a2.getY() + Commons.GO_DOWN);
+					}
+				}
 
-					Alien a2 = i1.next();
-					a2.setY(a2.getY() + Commons.GO_DOWN);
+				if (x <= Commons.BORDER_LEFT && direction != 1) {
+
+					direction = 1;
+
+					Iterator<Alien> i2 = aliens.iterator();
+
+					while (i2.hasNext()) {
+
+						Alien a = i2.next();
+						a.setY(a.getY() + Commons.GO_DOWN);
+					}
+				}
+				if (alien.isDying()) {
+
+					alien.die();
 				}
 			}
-
-			if (x <= Commons.BORDER_LEFT && direction != 1) {
-
-				direction = 1;
-
-				Iterator<Alien> i2 = aliens.iterator();
-
-				while (i2.hasNext()) {
-
-					Alien a = i2.next();
-					a.setY(a.getY() + Commons.GO_DOWN);
-				}
-			}
-			if (alien.isDying()) {
-
-				alien.die();
-			}
-
 		}
 
 		Iterator<Alien> it = aliens.iterator();
