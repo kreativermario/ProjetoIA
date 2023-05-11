@@ -250,7 +250,7 @@ public class Board extends JPanel {
 		double[] output = controller.nextMove(d);
 
 		player.act(output);
-		if (output[3] > 0.5) { //pq [3]?
+		if (output[3] > 0.5) {
 			if (inGame) {
 				//logger.warn("Shooting...");
 				if (!shot.isVisible()) {
@@ -353,19 +353,15 @@ public class Board extends JPanel {
 		// bombs
 
 		for (Alien alien : aliens) {
-			int distanceFromCenter = (Commons.BOARD_WIDTH-Commons.BORDER_LEFT-Commons.BORDER_RIGHT)/2 - alien.getX();
-			//logger.debug("Distance from center: " + distanceFromCenter + " | Alien X: " + alien.getX() + " | Alien Y: " + alien.getY());
-			int probShot = generator.nextInt( (1500/  (Math.abs( distanceFromCenter ) +1)) );
-			//probShot = 1;
+			int shot = generator.nextInt(400);
 			Alien.Bomb bomb = alien.getBomb();
 
-			if ((probShot == Commons.CHANCE || alien.getX() == player.getX()) && alien.isVisible() && bomb.isDestroyed()) {
-				//logger.debug("Shots! Shots!");
+			if ((shot == Commons.CHANCE || alien.getX() == player.getX()) && alien.isVisible() && bomb.isDestroyed()) {
+
 				bomb.setDestroyed(false);
 				bomb.setX(alien.getX());
 				bomb.setY(alien.getY());
 			}
-
 
 			int bombX = bomb.getX();
 			int bombY = bomb.getY();
@@ -432,14 +428,17 @@ public class Board extends JPanel {
 	}
 
 	public Double getFitness() {
-		double fitness =  (getDeaths() * 10000 + getTime() + player.movPoints());
+		double fitness =  (getDeaths() * Commons.POINTS_PER_KILL + getTime() + player.getPoints());
+		//logger.info("Kills + Time {}", getDeaths() * Commons.POINTS_PER_KILL + getTime());
+		//logger.info("Player moving points {}", player.getPoints());
 		if(deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY){
-			fitness += 50000.0;
+			fitness += Commons.POINTS_PER_WIN;
 			logger.debug("Game won!");
 		}
 		// System.out.println(fitness);
 		return fitness;
 	}
+
 
 	public void setController(GameController controller) {
 		this.controller = controller;

@@ -1,5 +1,0 @@
-21:45:17.732 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=4, nrFitIndividuals=247, tournamentSize=39, seed=953, hiddenDimSize=37, mutationProb=0.358469843630004, populationSize=579}
-21:45:19.571 [pool-1-thread-1] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-1 | Generation no: 1
-21:45:21.436 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=90, nrFitIndividuals=52, tournamentSize=52, seed=152, hiddenDimSize=42, mutationProb=0.08694253342926272, populationSize=655}
-21:45:21.679 [main] INFO  algoGenetico.PopulationEvo - Hyperparameters{nrGenerations=39, nrFitIndividuals=1, tournamentSize=1, seed=10, hiddenDimSize=4, mutationProb=0.14113803539138736, populationSize=182}
-21:45:21.839 [pool-1-thread-1] INFO  algoGenetico.PopulationEvo - Thread: pool-1-thread-1 | Generation no: 2
