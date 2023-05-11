@@ -25,14 +25,8 @@ Z
 *logs/spaceinvaders-2023-05-09_08-09-23.log,7/d/7dfdb09c716390d6c72cc6928c187fb750c7a2f7
 Z
 *logs/spaceinvaders-2023-05-09_08-07-50.log,2/b/2bbca23003b86c8585516149db068569bd578c7d
-_
-/src/main/java/algoGenetico/Hyperparameters.java,9/8/98b5b569fc24f7a941215824e0ad7bdbc5c07b63
 U
 %src/main/java/space/sprite/Alien.java,8/f/8f6ad935b4c3118c9568785a598644202542ed3a
-S
-#src/main/java/nn/NeuralNetwork.java,6/a/6a449aa948b51f5396b8827acc025055d63764b3
-P
- src/main/java/space/Commons.java,4/5/45fbb036da8cb06669ed2b9f6055803ec0297740
 w
 G.idea/sonarlint/issuestore/b/7/b798a3698e1f167a5385a0259a56555f14717aa3,2/c/2cd10da7776f197d0518ea4c3252014cd3eb8ba2
 w
@@ -61,7 +55,3 @@ Q.idea/sonarlint/securityhotspotstore/1/b/1bb06d7092e1a37b258abb2661e26b2987bc5b
 Q.idea/sonarlint/securityhotspotstore/4/9/496a238a6afa168dbaf6efd37bb459331589579c,b/0/b0bb0a26d88d16d2e82502fe47e034e248a527a2
 Å
 Q.idea/sonarlint/securityhotspotstore/f/0/f09f01c406930fafb6b780796b5ac0da3504d340,5/9/591b4201ea47b011fadc684f93f5966107f8ac29
-b
-2src/main/java/algoGenetico/HyperparametersEvo.java,2/a/2adf2fbcc3096ef85ea81196b07e2fa613097449
-F
-neural_net_600_corners,4/5/45d28bb870918200b62b811d2410538182249923

@@ -32,6 +32,37 @@ public class PopulationEvo {
 		this.randomObject = new Random(hyperparameters.getSeed());
 	}
 
+	public void initFrom(NeuralNetwork champ){
+
+		createPopulation(); //é basicamente o código do main
+		population.remove(0);
+		population.add(champ);
+		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
+		long startTime = System.currentTimeMillis();
+
+
+		while (curGeneration < hyperparameters.getNrGenerations()) {
+			createNewGen();
+
+			// Parallelize fitness evaluations
+			for (NeuralNetwork nn : getPopulation()) {
+				Board board = new Board(nn);
+				board.setSeed(hyperparameters.getSeed());
+				board.run();
+				Double fitness = board.getFitness();
+				nn.setFitness(fitness);
+			}
+			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
+					hyperparameters.getNrGenerations());
+		}
+
+		long endTime = System.currentTimeMillis();
+		long duration = endTime - startTime;
+		logger.info("Thread: {} | Fittest: {}", Thread.currentThread().getName(), getFittest().getFitness());
+		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
+
+		saveBestNeuralNetwork();
+	}
 	public void init(){
 		createPopulation(); //é basicamente o código do main
 		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
@@ -42,7 +73,7 @@ public class PopulationEvo {
 			createNewGen();
 
 			// Parallelize fitness evaluations
-			for (NeuralNetwork nn : population) {
+			for (NeuralNetwork nn : getPopulation()) {
 				Board board = new Board(nn);
 				board.setSeed(hyperparameters.getSeed());
 				board.run();
@@ -90,19 +121,19 @@ public class PopulationEvo {
 
 
 	public NeuralNetwork getFittest(){
-		Collections.sort(population);
-		return population.get(0);
+		Collections.sort(getPopulation());
+		return getPopulation().get(0);
 	}
 
 
 	//create a population of individual  methods
 	private void createPopulation() {
 
-		population = new LinkedList<>();
+		setPopulation(new LinkedList<>());
 
 		for (int i = 0; i < hyperparameters.getPopulationSize(); i++) {
 			NeuralNetwork nn = new NeuralNetwork(hyperparameters.getHiddenDimSize());
-			population.add(nn);
+			getPopulation().add(nn);
 			nn.initializeWeights();
 			Board board = new Board(nn);
 			board.setSeed(hyperparameters.getSeed());
@@ -118,11 +149,11 @@ public class PopulationEvo {
 
 	private void createNewGen() {
 		// Implementing Elitism. Directly copying the best individuals.
-		Collections.sort(population);
+		Collections.sort(getPopulation());
 		int elitismCount = (int)(hyperparameters.getElitismRatio() * hyperparameters.getPopulationSize());
-		List<NeuralNetwork> newPopulation = new ArrayList<>(population.subList(0, elitismCount));
+		List<NeuralNetwork> newPopulation = new ArrayList<>(getPopulation().subList(0, elitismCount));
 
-		while (population.size() < hyperparameters.getPopulationSize()) {
+		while (getPopulation().size() < hyperparameters.getPopulationSize()) {
 			// Pick 2 NeuralNetwork (parents) from fit population list
 			NeuralNetwork firstParent = selectParent();
 			NeuralNetwork secondParent = selectParent();
@@ -147,10 +178,10 @@ public class PopulationEvo {
 					mutate(child);
 				}
 				// Add the new child to the population
-				population.add(child);
+				getPopulation().add(child);
 			}
 		}
-		this.population = newPopulation;
+		this.setPopulation(newPopulation);
 		this.curGeneration++;
 	}
 
@@ -191,7 +222,7 @@ public class PopulationEvo {
 	private NeuralNetwork selectParent(){
 		List<NeuralNetwork> selected = new ArrayList<>();
 		for (int i = 0; i < hyperparameters.getTournamentSize(); i++) {
-			selected.add(population.get(randomObject.nextInt(population.size())));
+			selected.add(getPopulation().get(randomObject.nextInt(getPopulation().size())));
 		}
 		selected.sort(Comparator.comparingDouble(NeuralNetwork::getFitness));
 		return selected.get(0);
@@ -235,4 +266,11 @@ public class PopulationEvo {
 		return null;
 	}
 
+	public List<NeuralNetwork> getPopulation() {
+		return population;
+	}
+
+	public void setPopulation(List<NeuralNetwork> population) {
+		this.population = population;
+	}
 }

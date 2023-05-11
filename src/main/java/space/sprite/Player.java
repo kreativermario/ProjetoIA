@@ -12,6 +12,7 @@ public class Player extends Sprite {
 
 	private Logger logger = LoggerFactory.getLogger(Player.class);
 	private int width;
+	private int movePoints;
 
 	public Player() {
 
@@ -31,6 +32,8 @@ public class Player extends Sprite {
 
 		int START_Y = 280;
 		setY(START_Y);
+
+		movePoints = 0;
 	}
 
 	private int maxIndex(double[] output) {
@@ -49,15 +52,21 @@ public class Player extends Sprite {
 		int key = maxIndex(output);
 		if (key == 1) {
 			//logger.info("Moving Left...");
+			movePoints += 30;
 			dx = -2;
 		}
 		if (key == 2) {
 			//logger.info("Moving Right...");
+			movePoints += 30;
 			dx = 2;
 		}
 		if (key == 0) {
 			//logger.info("Moving Stop...");
+			movePoints -= 30;
 			dx = 0;
+			//make board fitness lower
+
+
 		}
 	}
 
@@ -67,14 +76,14 @@ public class Player extends Sprite {
 
 		x += dx;
 
-		int cornerZone = (int)(Commons.BOARD_WIDTH * 0.05); // 1% of board width
+		int cornerZone = (int)((Commons.BOARD_WIDTH-Commons.BORDER_LEFT-Commons.BORDER_RIGHT) * 0.03); // 1% of board width
 
 		if (x <= cornerZone) {
 			x = cornerZone;
 		}
 
-		if (x >= Commons.BOARD_WIDTH - cornerZone - width) {
-			x = Commons.BOARD_WIDTH - cornerZone - width;
+		if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT - cornerZone - width) {
+			x = Commons.BOARD_WIDTH - Commons.BORDER_RIGHT - cornerZone - width;
 		}
 	}
 
@@ -119,5 +128,9 @@ public class Player extends Sprite {
 
 	public void stop() {
 		dx = 0;
+	}
+
+	public int movPoints() {
+		return movePoints;
 	}
 }
