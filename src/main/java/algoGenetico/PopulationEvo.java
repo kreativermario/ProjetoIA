@@ -12,7 +12,7 @@ import java.util.*;
 
 public class PopulationEvo {
 
-	private static final String BEST_NN_FILE = "mario_results.txt";
+	private static final String BEST_NN_FILE = "mario_results_corners_movement.txt";
 
 	private final Logger logger = LoggerFactory.getLogger(PopulationEvo.class);
 	private List<NeuralNetwork> population = new ArrayList<>();

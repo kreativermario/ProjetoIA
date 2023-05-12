@@ -210,7 +210,7 @@ public class Board extends JPanel {
 	}
 
 	private double[] createState() {
-		double[] state = new double[aliens.size() * 3 * 2 + 1 + 3];
+		double[] state = new double[Commons.STATE_SIZE];
 		int index = 0;
 		for (Alien a : aliens) {
 			state[index++] = (a.getX() * 1.0) / Commons.BOARD_WIDTH;
@@ -222,6 +222,10 @@ public class Board extends JPanel {
 			if (!a.getBomb().isDestroyed()) {
 				state[index++] = (a.getBomb().getX() * 1.0) / Commons.BOARD_WIDTH;
 				state[index++] = (a.getBomb().getY() * 1.0) / Commons.BOARD_HEIGHT;
+			} else {
+				state[index++] = 0;
+				state[index++] = 0;
+
 			}
 		}
 		state[index++] = (player.getX() * 1.0) / Commons.BOARD_WIDTH;
@@ -230,7 +234,7 @@ public class Board extends JPanel {
 			state[index++] = (shot.getY() * 1.0) / Commons.BOARD_HEIGHT;
 			//state[index++] = shot.isDying() ? -1 : 1;
 		}
-		
+
 		return state;
 	}
 

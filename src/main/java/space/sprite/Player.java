@@ -60,13 +60,12 @@ public class Player extends Sprite {
 			dx = 2;
 		}
 		if (key == 0) {
-			//logger.info("Moving Stop...");
-			removePoints(Commons.PENALTY_POINTS/2);
+			//logger.info("Moving Stop...");ß
 			dx = 0;
 		}
 	}
 
-	public void act(double[] output) {
+	/*public void act(double[] output) {
 
 		applyOrder(output);
 
@@ -103,8 +102,31 @@ public class Player extends Sprite {
 			//logger.info("Moving... adding points");
 			addPoints(Commons.POINTS_PER_MOVEMENT);
 		}
-	}
+	}*/
 
+	public void act(double[] output) {
+
+		applyOrder(output);
+
+		x += dx;
+		int cornerZone = (int)((Commons.BOARD_WIDTH-Commons.BORDER_LEFT-Commons.BORDER_RIGHT) * 0.03); // 3% of board width
+		// Left hotzone
+		if(x <= cornerZone){
+			x = cornerZone;
+		} else if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT - cornerZone - width) {
+			x = Commons.BOARD_WIDTH - Commons.BORDER_RIGHT - cornerZone - width;
+		}
+//		if(x <= 2){
+//			 x = 2;
+//		}
+//		if(x >= Commons.BOARD_WIDTH - 2 * width){
+//			x = Commons.BOARD_WIDTH - 2 * width;
+//		}
+		if(dx != 0){
+			//logger.info("Moving... adding points");
+			addPoints(Commons.POINTS_PER_MOVEMENT);
+		}
+	}
 
 
 
