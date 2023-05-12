@@ -29,7 +29,7 @@ public class PopulationEvo {
 
 	public PopulationEvo(Hyperparameters hyperparameters){
 		this.hyperparameters = hyperparameters;
-		this.randomObject = new Random(hyperparameters.getSeed());
+		this.randomObject = new Random();
 	}
 
 	public void initFrom(NeuralNetwork champ){
@@ -44,7 +44,6 @@ public class PopulationEvo {
 		while (curGeneration < hyperparameters.getNrGenerations()) {
 			createNewGen();
 
-			// Parallelize fitness evaluations
 			for (NeuralNetwork nn : getPopulation()) {
 				Board board = new Board(nn);
 				board.setSeed(hyperparameters.getSeed());
@@ -72,7 +71,6 @@ public class PopulationEvo {
 		while (curGeneration < hyperparameters.getNrGenerations()) {
 			createNewGen();
 
-			// Parallelize fitness evaluations
 			for (NeuralNetwork nn : getPopulation()) {
 				Board board = new Board(nn);
 				board.setSeed(hyperparameters.getSeed());
@@ -126,7 +124,6 @@ public class PopulationEvo {
 	}
 
 
-	//create a population of individual  methods
 	private void createPopulation() {
 
 		setPopulation(new LinkedList<>());
@@ -148,17 +145,17 @@ public class PopulationEvo {
 
 
 	private void createNewGen() {
-		// Implementing Elitism. Directly copying the best individuals.
+
 		Collections.sort(getPopulation());
 		int elitismCount = (int)(hyperparameters.getElitismRatio() * hyperparameters.getPopulationSize());
 		List<NeuralNetwork> newPopulation = new ArrayList<>(getPopulation().subList(0, elitismCount));
 
 		while (getPopulation().size() < hyperparameters.getPopulationSize()) {
-			// Pick 2 NeuralNetwork (parents) from fit population list
+
 			NeuralNetwork firstParent = selectParent();
 			NeuralNetwork secondParent = selectParent();
 
-			// Make sure parents are not null
+
 			while (firstParent == null) {
 				firstParent = selectParent();
 			}
@@ -166,18 +163,18 @@ public class PopulationEvo {
 				secondParent = selectParent();
 			}
 
-			// Make sure parents are different
+
 			while (firstParent.equals(secondParent)) {
 				secondParent = selectParent();
 			}
 
 			List<NeuralNetwork> children = crossover(firstParent, secondParent);
 			for(NeuralNetwork child : children){
-				// Mutate the child with a certain probability
+
 				if (Math.random() < hyperparameters.getMutationProb()) {
 					mutate(child);
 				}
-				// Add the new child to the population
+
 				getPopulation().add(child);
 			}
 		}
@@ -188,7 +185,7 @@ public class PopulationEvo {
 
 	private List<NeuralNetwork> crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
-		int random = randomObject.nextInt(0, size); // generates a random number between 0 (inclusive) and size (exclusive)
+		int random = randomObject.nextInt(0, size);
 
 		double[] firstGenes1 = Arrays.copyOfRange(parent1.getChromossome(), 0, random);
 		double[] secondGenes1 = Arrays.copyOfRange(parent2.getChromossome(), random, parent2.getChromossomeSize());
@@ -197,10 +194,10 @@ public class PopulationEvo {
 		if (random >= 0) System.arraycopy(firstGenes1, 0, child1Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes1, 0, child1Genes, random, size - random);
 
-		//create a new NeuralNetwork with the genes of the parents
+
 		NeuralNetwork child1 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child1Genes);
 
-		// Second child creation
+
 		double[] firstGenes2 = Arrays.copyOfRange(parent2.getChromossome(), 0, random);
 		double[] secondGenes2 = Arrays.copyOfRange(parent1.getChromossome(), random, parent1.getChromossomeSize());
 
@@ -208,7 +205,7 @@ public class PopulationEvo {
 		if (random >= 0) System.arraycopy(firstGenes2, 0, child2Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes2, 0, child2Genes, random, size - random);
 
-		//create a new NeuralNetwork with the genes of the parents
+
 		NeuralNetwork child2 = new NeuralNetwork(hyperparameters.getHiddenDimSize(), child2Genes);
 
 		List<NeuralNetwork> children = new ArrayList<>();
@@ -230,11 +227,10 @@ public class PopulationEvo {
 
 
 	public void mutate(NeuralNetwork neuralNetwork) {
-		// select two random genes to swap
+
 		int gene1 = randomObject.nextInt(neuralNetwork.getChromossomeSize());
 		int gene2 = randomObject.nextInt(neuralNetwork.getChromossomeSize());
 
-		// swap the values of the two selected genes
 		double temp = neuralNetwork.getChromossome()[gene1];
 		neuralNetwork.getChromossome()[gene1] = neuralNetwork.getChromossome()[gene2];
 		neuralNetwork.getChromossome()[gene2] = temp;
