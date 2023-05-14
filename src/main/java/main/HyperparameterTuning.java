@@ -43,12 +43,12 @@ public class HyperparameterTuning {
     }
 
     public void runSingle() {
-        int populationSize =  700;
+        int populationSize =  400;
         double elitismRatio = 0.15;
         double mutationProb = 0.02;
-        int nrGenerations =  1600;
-        int tournamentSize = 40;
-        int hiddenDimSize = 16;
+        int nrGenerations =  4000;
+        int tournamentSize = 20;
+        int hiddenDimSize = 12;
         int seed = 2708;
         Hyperparameters hyperparameters = new Hyperparameters(nrGenerations, elitismRatio, tournamentSize,
                  seed, hiddenDimSize, mutationProb, populationSize);

@@ -30,7 +30,7 @@ public interface Commons {
     // Parametros de fitness
     int POINTS_PER_KILL = 15000;
     int POINTS_PER_WIN = 500000;
-    int POINTS_PER_MOVEMENT = 35;
+    int POINTS_PER_MOVEMENT = 10;
     int PENALTY_POINTS = 1;
     int MAX_CORNER_TICKS = 3;
 
