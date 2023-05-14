@@ -32,36 +32,37 @@ public class PopulationEvo {
 		this.randomObject = new Random();
 	}
 
-	public void initFrom(NeuralNetwork champ){
+//	public void initFrom(NeuralNetwork champ){
+//
+//		createPopulation(); //é basicamente o código do main
+//		population.remove(0);
+//		population.add(champ);
+//		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
+//		long startTime = System.currentTimeMillis();
+//
+//
+//		while (curGeneration < hyperparameters.getNrGenerations()) {
+//			createNewGen();
+//
+//			for (NeuralNetwork nn : getPopulation()) {
+//				Board board = new Board(nn);
+//				board.setSeed(hyperparameters.getSeed());
+//				board.run();
+//				Double fitness = board.getFitness();
+//				nn.setFitness(fitness);
+//			}
+//			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
+//					hyperparameters.getNrGenerations());
+//		}
+//
+//		long endTime = System.currentTimeMillis();
+//		long duration = endTime - startTime;
+//		logger.info("Thread: {} | Fittest: {}", Thread.currentThread().getName(), getFittest().getFitness());
+//		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
+//
+//		saveBestNeuralNetwork();
+//	}
 
-		createPopulation(); //é basicamente o código do main
-		population.remove(0);
-		population.add(champ);
-		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
-		long startTime = System.currentTimeMillis();
-
-
-		while (curGeneration < hyperparameters.getNrGenerations()) {
-			createNewGen();
-
-			for (NeuralNetwork nn : getPopulation()) {
-				Board board = new Board(nn);
-				board.setSeed(hyperparameters.getSeed());
-				board.run();
-				Double fitness = board.getFitness();
-				nn.setFitness(fitness);
-			}
-			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
-					hyperparameters.getNrGenerations());
-		}
-
-		long endTime = System.currentTimeMillis();
-		long duration = endTime - startTime;
-		logger.info("Thread: {} | Fittest: {}", Thread.currentThread().getName(), getFittest().getFitness());
-		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
-
-		saveBestNeuralNetwork();
-	}
 	public void init(){
 		createPopulation(); //é basicamente o código do main
 		logger.info("Thread: {} | {}", Thread.currentThread().getName(), hyperparameters.toString());
@@ -88,33 +89,6 @@ public class PopulationEvo {
 		logger.info("Thread: {} | Init method took {} ms", Thread.currentThread().getName(), duration);
 
 		saveBestNeuralNetwork();
-	}
-
-
-	private synchronized void saveBestNeuralNetwork() {
-		logger.info("Thread: {} | GOING TO WRITE... writing file", Thread.currentThread().getName());
-		NeuralNetwork currentBestNN = getFittest();
-		double currentBestFitness = currentBestNN.getFitness();
-
-		try (PrintWriter writer = new PrintWriter(new FileWriter(BEST_NN_FILE, true))) {
-			LocalDateTime now = LocalDateTime.now();
-			String formattedDateTime = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss:SSS"));
-			writer.println("-------------------------------------------------");
-			writer.println("Time: " + formattedDateTime);
-			writer.println("Best Fitness: " + currentBestFitness);
-			logger.info("Thread: {} | WROTE Fittest: {}", Thread.currentThread().getName(), currentBestFitness);
-			writer.println(Arrays.toString(currentBestNN.getChromossome()));
-			//logger.debug("Thread: {} wrote CHROMOSSOME\n{}", Thread.currentThread().getName(), currentBestNN.getChromossome());
-			writer.println("Population Size: " + hyperparameters.getPopulationSize());
-			writer.println("Elitism ratio: " + hyperparameters.getElitismRatio());
-			writer.println("Mutation Probability: " + hyperparameters.getMutationProb());
-			writer.println("Number of Generations: " + hyperparameters.getNrGenerations());
-			writer.println("Tournament Size: " + hyperparameters.getTournamentSize());
-			writer.println("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
-			writer.println("Seed: " + hyperparameters.getSeed());
-		} catch (IOException e) {
-			logger.error("Error appending best neural network and parameters to file", e);
-		}
 	}
 
 
@@ -185,7 +159,7 @@ public class PopulationEvo {
 
 	private List<NeuralNetwork> crossover(NeuralNetwork parent1, NeuralNetwork parent2){
 		int size = parent1.getChromossomeSize();
-		int random = randomObject.nextInt(0, size);
+		int random = randomObject.nextInt(size);
 
 		double[] firstGenes1 = Arrays.copyOfRange(parent1.getChromossome(), 0, random);
 		double[] secondGenes1 = Arrays.copyOfRange(parent2.getChromossome(), random, parent2.getChromossomeSize());
@@ -221,7 +195,7 @@ public class PopulationEvo {
 		for (int i = 0; i < hyperparameters.getTournamentSize(); i++) {
 			selected.add(getPopulation().get(randomObject.nextInt(getPopulation().size())));
 		}
-		selected.sort(Comparator.comparingDouble(NeuralNetwork::getFitness));
+		Collections.sort(selected);
 		return selected.get(0);
 	}
 
@@ -269,4 +243,31 @@ public class PopulationEvo {
 	public void setPopulation(List<NeuralNetwork> population) {
 		this.population = population;
 	}
+
+	private synchronized void saveBestNeuralNetwork() {
+		logger.info("Thread: {} | GOING TO WRITE... writing file", Thread.currentThread().getName());
+		NeuralNetwork currentBestNN = getFittest();
+		double currentBestFitness = currentBestNN.getFitness();
+
+		try (PrintWriter writer = new PrintWriter(new FileWriter(BEST_NN_FILE, true))) {
+			LocalDateTime now = LocalDateTime.now();
+			String formattedDateTime = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss:SSS"));
+			writer.println("-------------------------------------------------");
+			writer.println("Time: " + formattedDateTime);
+			writer.println("Best Fitness: " + currentBestFitness);
+			logger.info("Thread: {} | WROTE Fittest: {}", Thread.currentThread().getName(), currentBestFitness);
+			writer.println(Arrays.toString(currentBestNN.getChromossome()));
+			//logger.debug("Thread: {} wrote CHROMOSSOME\n{}", Thread.currentThread().getName(), currentBestNN.getChromossome());
+			writer.println("Population Size: " + hyperparameters.getPopulationSize());
+			writer.println("Elitism ratio: " + hyperparameters.getElitismRatio());
+			writer.println("Mutation Probability: " + hyperparameters.getMutationProb());
+			writer.println("Number of Generations: " + hyperparameters.getNrGenerations());
+			writer.println("Tournament Size: " + hyperparameters.getTournamentSize());
+			writer.println("Hidden Layer Size: " + hyperparameters.getHiddenDimSize());
+			writer.println("Seed: " + hyperparameters.getSeed());
+		} catch (IOException e) {
+			logger.error("Error appending best neural network and parameters to file", e);
+		}
+	}
+
 }
