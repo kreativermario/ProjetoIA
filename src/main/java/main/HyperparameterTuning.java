@@ -52,18 +52,18 @@ public class HyperparameterTuning {
 
     private void runMultiple(){
         int numRuns = 1000000; // number of runs with different settings
-        int numThreads = 1; // number of threads in the thread pool
+        int numThreads = 5; // number of threads in the thread pool
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         List<Future<?>> futures = new ArrayList<>();
 
         for (int i = 0; i < numRuns; i++) {
             futures.add(executor.submit(() -> {
                 // Randomize hyperparameters
-                int populationSize = random.nextInt(2000) + 300;
+                int populationSize = random.nextInt(2000) + 100;
                 double elitismRatio = 0.15 + (0.1 - 0.15) * random.nextDouble();
                 double mutationProb = 0.01 + (0.03 - 0.01) * random.nextDouble();
                 int nrGenerations = random.nextInt(1400) + 200;
-                int tournamentSize = random.nextInt(5) + 5;
+                int tournamentSize = random.nextInt(35) + 5;
                 int hiddenDimSize = random.nextInt(26) + 1;
                 int seed = random.nextInt(6000);
 
@@ -92,9 +92,9 @@ public class HyperparameterTuning {
     public void runSingle() {
         int populationSize = 500;
         double elitismRatio = 0.2;
-        double mutationProb = 0.5;
-        int nrGenerations =  5;
-        int tournamentSize = 50;
+        double mutationProb = 0.05;
+        int nrGenerations =  50;
+        int tournamentSize = 4;
         int hiddenDimSize = 22;
         int seed = 6942;
         Hyperparameters hyperparameters = new Hyperparameters(nrGenerations, elitismRatio, tournamentSize,
@@ -105,8 +105,8 @@ public class HyperparameterTuning {
 
     public static void main(String[] args) throws InterruptedException {
         HyperparameterTuning hyperparameterTuning = new HyperparameterTuning();
-       //hyperparameterTuning.runMultiple();
-        hyperparameterTuning.runSingle();
+        hyperparameterTuning.runMultiple();
+        //hyperparameterTuning.runSingle();
         //hyperparameterTuning.runMultipleSameSeed(100, 25, 2065);
     }
 }

@@ -79,8 +79,8 @@ public class PopulationEvo {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
-//			Collections.sort(population);
-//			population.forEach(e -> logger.info("Gen: {}  -> Fitness: {}", curGeneration, e.getFitness()));
+			Collections.sort(population);
+			population.forEach(e -> logger.info("Gen: {}  -> Fitness: {}", curGeneration, e.getFitness()));
 			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
 					hyperparameters.getNrGenerations());
 		}
