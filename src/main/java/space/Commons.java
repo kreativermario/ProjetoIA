@@ -26,9 +26,14 @@ public interface Commons {
 
     int STATE_SIZE = Commons.NUMBER_OF_ALIENS_TO_DESTROY * 3 * 2 + 1 + 3;
     int NUM_ACTIONS = 4; // 0 - left, 1 - right, 2 - stop, 3 - fire.
+
+    // Parametros de fitness
     int POINTS_PER_KILL = 15000;
     int POINTS_PER_WIN = 500000;
-    int POINTS_PER_MOVEMENT = 5;
-    int PENALTY_POINTS = 20;
+    int POINTS_PER_MOVEMENT = 35;
+    int PENALTY_POINTS = 1;
     int MAX_CORNER_TICKS = 3;
+
+    // Parametros do algoritmo
+    String RESULTS_FILENAME = "best_results.txt";
 }

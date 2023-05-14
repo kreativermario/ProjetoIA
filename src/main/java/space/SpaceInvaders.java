@@ -35,38 +35,13 @@ public class SpaceInvaders extends JFrame {
 	}
 
 	public static void main(String[] args) {
-
-
-
+		
 		EventQueue.invokeLater(() -> {
-			NeuralNetwork fittest = PopulationEvo.importInitialChamp(22,
+			NeuralNetwork fittest = PopulationEvo.importInitialChamp(14,
 					new File("src/main/java/algoGenetico/NetworkChamp.txt"));
-			showControllerPlaying(fittest, 2257);
+			showControllerPlaying(fittest, 2708);
 		});
 
-		/*Hyperparameters hyperparameters = new Hyperparameters();
-		hyperparameters.setNrGenerations(40);
-		hyperparameters.setNrFitIndividuals(20);
-		hyperparameters.setTournamentSize(4);
-		hyperparameters.setSeed(750);
-		hyperparameters.setHiddenDimSize(15);
-		hyperparameters.setMutationProb(0.3);
-		hyperparameters.setPopulationSize(650);
-
-		PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
-		populationEvo.start();
-		try {
-			populationEvo.join();
-			NeuralNetwork fittest = populationEvo.getFittest();
-			logger.info("BEST FITNESS: {}", fittest.getFitness());
-			logger.info(Arrays.toString(fittest.getChromossome()));
-			EventQueue.invokeLater(() -> {
-				showControllerPlaying(fittest, hyperparameters.getSeed());
-			});
-
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}*/
 	}
 
 
