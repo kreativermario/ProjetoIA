@@ -79,6 +79,8 @@ public class PopulationEvo {
 				Double fitness = board.getFitness();
 				nn.setFitness(fitness);
 			}
+//			Collections.sort(population);
+//			population.forEach(e -> logger.info("Gen: {}  -> Fitness: {}", curGeneration, e.getFitness()));
 			logger.info("Thread: {} | Generation no: {} out of {}", Thread.currentThread().getName(), curGeneration,
 					hyperparameters.getNrGenerations());
 		}
@@ -124,7 +126,7 @@ public class PopulationEvo {
 		int elitismCount = (int)(hyperparameters.getElitismRatio() * hyperparameters.getPopulationSize());
 		List<NeuralNetwork> newPopulation = new ArrayList<>(getPopulation().subList(0, elitismCount));
 
-		while (getPopulation().size() < hyperparameters.getPopulationSize()) {
+		while (newPopulation.size() < hyperparameters.getPopulationSize()) {
 
 			NeuralNetwork firstParent = selectParent();
 			NeuralNetwork secondParent = selectParent();
@@ -149,12 +151,13 @@ public class PopulationEvo {
 					mutate(child);
 				}
 
-				getPopulation().add(child);
+				newPopulation.add(child);
 			}
 		}
 		this.setPopulation(newPopulation);
 		this.curGeneration++;
 	}
+
 
 
 	private List<NeuralNetwork> crossover(NeuralNetwork parent1, NeuralNetwork parent2){
@@ -165,7 +168,7 @@ public class PopulationEvo {
 		double[] secondGenes1 = Arrays.copyOfRange(parent2.getChromossome(), random, parent2.getChromossomeSize());
 
 		double[] child1Genes = new double[size];
-		if (random >= 0) System.arraycopy(firstGenes1, 0, child1Genes, 0, random);
+		System.arraycopy(firstGenes1, 0, child1Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes1, 0, child1Genes, random, size - random);
 
 
@@ -176,7 +179,7 @@ public class PopulationEvo {
 		double[] secondGenes2 = Arrays.copyOfRange(parent1.getChromossome(), random, parent1.getChromossomeSize());
 
 		double[] child2Genes = new double[size];
-		if (random >= 0) System.arraycopy(firstGenes2, 0, child2Genes, 0, random);
+		System.arraycopy(firstGenes2, 0, child2Genes, 0, random);
 		if (size - random >= 0) System.arraycopy(secondGenes2, 0, child2Genes, random, size - random);
 
 

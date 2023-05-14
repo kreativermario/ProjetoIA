@@ -62,9 +62,9 @@ public class HyperparameterTuning {
                 int populationSize = random.nextInt(2000) + 300;
                 double elitismRatio = 0.15 + (0.1 - 0.15) * random.nextDouble();
                 double mutationProb = 0.01 + (0.03 - 0.01) * random.nextDouble();
-                int nrGenerations = random.nextInt(1600) + 200;
-                int tournamentSize = random.nextInt(130) + 5;
-                int hiddenDimSize = random.nextInt(30) + 1;
+                int nrGenerations = random.nextInt(1400) + 200;
+                int tournamentSize = random.nextInt(5) + 5;
+                int hiddenDimSize = random.nextInt(26) + 1;
                 int seed = random.nextInt(6000);
 
                 Hyperparameters hyperparameters = new Hyperparameters(nrGenerations, elitismRatio, tournamentSize,
@@ -90,13 +90,13 @@ public class HyperparameterTuning {
     }
 
     public void runSingle() {
-        int populationSize = 1000;
+        int populationSize = 500;
         double elitismRatio = 0.2;
-        double mutationProb = 0.01;
-        int nrGenerations =  1200;
+        double mutationProb = 0.5;
+        int nrGenerations =  5;
         int tournamentSize = 50;
-        int hiddenDimSize = 10;
-        int seed = 2566;
+        int hiddenDimSize = 22;
+        int seed = 6942;
         Hyperparameters hyperparameters = new Hyperparameters(nrGenerations, elitismRatio, tournamentSize,
                  seed, hiddenDimSize, mutationProb, populationSize);
         PopulationEvo populationEvo = new PopulationEvo(hyperparameters);
@@ -105,8 +105,7 @@ public class HyperparameterTuning {
 
     public static void main(String[] args) throws InterruptedException {
         HyperparameterTuning hyperparameterTuning = new HyperparameterTuning();
-//        hyperparameterTuning.runSingle();
-        //hyperparameterTuning.runMultiple();
+       //hyperparameterTuning.runMultiple();
         hyperparameterTuning.runSingle();
         //hyperparameterTuning.runMultipleSameSeed(100, 25, 2065);
     }
